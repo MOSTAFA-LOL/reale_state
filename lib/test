@@ -1,0 +1,146 @@
+// import 'dart:math';
+
+// import 'package:carousel_slider/carousel_slider.dart';
+// import 'package:flutter/material.dart';
+
+// class Homepage extends StatefulWidget {
+//   const Homepage({super.key});
+
+//   @override
+//   State<Homepage> createState() => _HomepageState();
+// }
+
+// class _HomepageState extends State<Homepage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     List imgList = [
+//       'assets/images/japan.png',
+//       'assets/images/new-york.png',
+//     ];
+//     return Scaffold(
+//         bottomNavigationBar: BottomNavigationBar(
+//           currentIndex: 0,
+//           items: const [
+//             BottomNavigationBarItem(
+//               backgroundColor: Color.fromARGB(255, 8, 81, 216),
+//               icon: Icon(Icons.home),
+//               label: 'Home',
+//             ),
+//             BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Explore'),
+//             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile')
+//           ],
+//         ),
+//         body: Container(
+//           // margin: EdgeInsets.only(top: 50,right: 20,left: 20),
+//           margin: EdgeInsets.all(9),
+//           child: Column(children: [
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceAround,
+//               children: [
+//                 Container(
+//                   margin: EdgeInsets.all(8),
+//                   child: Image.asset(
+//                     'assets/images/avatar.png',
+//                     width: 55,
+//                     height: 50,
+//                   ),
+//                 ),
+//                 Column(
+//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                   children: [
+//                     Text(
+//                       'Good Morning',
+//                       style: TextStyle(
+//                           fontSize: 10,
+//                           // ignore: deprecated_member_use
+//                           color: Colors.black.withOpacity(.6)),
+//                     ),
+//                     Text(
+//                       'Andrian hajdin',
+//                       style: TextStyle(fontWeight: FontWeight.bold),
+//                     ),
+//                   ],
+//                 ),
+//                 Icon(Icons.notifications_none),
+//                 Container(decoration: BoxDecoration(
+//                   color: Colors.blue,
+//                   shape: BoxShape.circle
+//                 ),child: Text('2'),
+//                 )
+//               ],
+//             ),
+//             Container(
+//               margin: EdgeInsets.symmetric(vertical: 11),
+//               padding: EdgeInsets.symmetric(horizontal: 5),
+//               decoration: BoxDecoration(
+//                 color: const Color.fromARGB(255, 255, 255, 255),
+//                 borderRadius: BorderRadius.circular(66),
+//               ),
+//               child: TextField(
+//                 decoration: InputDecoration(
+//                     suffix: Icon(
+//                       Icons.display_settings_outlined,
+//                     ),
+//                     icon: Icon(Icons.search),
+//                     border: InputBorder.none,
+//                     hintText: 'search someting',
+//                     hintStyle: TextStyle(fontSize: 15),
+//                     iconColor: const Color.fromARGB(255, 133, 127, 127)),
+//               ),
+//             ),
+//             Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//               children: [
+//                 Padding(
+//                   padding: const EdgeInsets.only(left: 7),
+//                   child: Text(
+//                     'Featured',
+//                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+//                   ),
+//                 ),
+//                 Padding(
+//                   padding: const EdgeInsets.only(right: 7),
+//                   child: Text(
+//                     'See All',
+//                     style: TextStyle(
+//                         fontWeight: FontWeight.bold,
+//                         fontSize: 20,
+//                         color: Colors.blueAccent),
+//                   ),
+//                 ),   ListView(
+//                   children: 
+//             <Widget>[
+//                       const SizedBox(
+//             height: 30,
+//                       ),
+
+//                       CarouselSlider(
+//               items: imgList
+//                   .map((imageUrl) => SizedBox(
+//                       // margin: const EdgeInsets.symmetric(horizontal: 10),
+//                       width: double.infinity,
+//                       child: Image.asset(
+//                         imageUrl,
+//                         fit: BoxFit.fill,
+//                       )))
+//                   .toList(),
+//               options: CarouselOptions(
+//                 onPageChanged: (index, _) {
+//                   // setState(() {
+//                   //   _currentIndex = index;
+//                   // });
+//                 },
+//               ))
+//                     ]
+
+//                   )
+//               ]
+//             ),
+        
+//           ]),
+//           ]
+//         )
+//         )
+//         );
+//   }
+// }
