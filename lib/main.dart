@@ -30,6 +30,7 @@ class _MyAppState extends State<MyApp> {
 
   ],
     child:  MaterialApp(
+      theme: ThemeData.light(),
       debugShowCheckedModeBanner: false,
       home: Welcome(),
     

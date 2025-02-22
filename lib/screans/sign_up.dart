@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:realestate/screans/homepage.dart';
+import 'package:realestate/screans/tap_screan.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -108,7 +109,7 @@ class _SignUpState extends State<SignUp> {
                         Navigator.push(
                             context, 
                             MaterialPageRoute(
-                                builder: (_) => Homepage()));
+                                builder: (_) => TapScrean()));
                       },
                       style: ButtonStyle(
                         backgroundColor:

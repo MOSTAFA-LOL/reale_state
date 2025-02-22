@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:realestate/screans/homepage.dart';
 import 'package:realestate/screans/sign_up.dart';
+import 'package:realestate/screans/tap_screan.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -76,7 +77,7 @@ class _LoginState extends State<Login> {
                 ()=> Navigator.push(
                                         context, 
                                         MaterialPageRoute(
-                                            builder: (_) => Homepage()))),
+                                            builder: (_) => TapScrean()))),
               child: Container(
                 height: 50,
                 width: 130,
