@@ -20,6 +20,7 @@ class _TapScreanState extends State<TapScrean> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CupertinoTabBar(
+        backgroundColor: Colors.grey,
           onTap: (index) {
             _pageController.jumpToPage(index);
             setState(() {
@@ -28,6 +29,7 @@ class _TapScreanState extends State<TapScrean> {
           },
           items: [
             BottomNavigationBarItem(
+              
                 icon: Icon(Icons.home,
                     color: currentPage == 0 ? color: Colors.white),
                 label: ''),

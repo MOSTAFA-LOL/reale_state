@@ -148,108 +148,10 @@ class _HomepageState extends State<Homepage> {
           )
         ]),
       )),
-        // bottomNavigationBar:
-    
-        // Container(
-        // margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        // decoration: BoxDecoration(
-        //   color: Colors.white,
-        //   borderRadius: BorderRadius.circular(30),
-        //   boxShadow: [
-        //   BoxShadow(
-        //     // ignore: deprecated_member_use
-        //     color: Colors.black.withOpacity(.5),
-        //     blurRadius: 25, offset: Offset(8, 20),
-        //   )
-        // ]),
-        //   child: ClipRRect(
-        //     borderRadius: BorderRadius.circular(30),
-        //     child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //     children: [
-        //       index == 1
-        //           ? _selectedWiget(
-        //               Icon(Icons.home),
-        //               'Home',
-        //             )
-        //           : IconButton(
-        //               icon: Icon(Icons.home),
-        //               onPressed: () {
-        //                 setState(() {
-        //                   index = 1;
-        //                 });
-        //               },
-        //             ),
-        //       index == 2
-        //           ? _selectedWiget(
-        //               Icon(Icons.search),
-        //               'Search',
-        //             )
-        //           : IconButton(
-        //               icon: Icon(Icons.search),
-        //               onPressed: () {
-        //                 Navigator.push(
-        //                     context, MaterialPageRoute(builder: (_) => Search()));
-        //                 setState(() {
-        //                   index = 2;
-        //                 });
-        //               },
-        //             ),
-        //       index == 3
-        //           ? _selectedWiget(
-        //               Icon(Icons.bookmark_outline),
-        //               'Saved',
-        //             )
-        //           : IconButton(
-        //               icon: Icon(Icons.bookmark_outline),
-        //               onPressed: () {
-        //                 Navigator.push(
-        //                     context, MaterialPageRoute(builder: (_) => Saved()));
-        //                 setState(() {
-        //                   index = 3;
-        //                 });
-        //               },
-        //             ),
-        //       index == 4
-        //           ? _selectedWiget(
-        //               Icon(Icons.person),
-        //               'Pofile',
-        //             )
-        //           : IconButton(
-        //               icon: Icon(Icons.person),
-        //               onPressed: () {
-        //                 Navigator.push(
-        //                     context, MaterialPageRoute(builder: (_) => Profile()));
-        //                 setState(() {
-        //                   index = 4;
-        //                 });
-        //               },
-        //             ),
-        //     ],
-        //           ),
-        //   ),
-        // ),
     );
   }
 
-  Widget _selectedWiget(Icon icon, String str) {
-    //appbar
-    return Container(
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
-            bottomRight: Radius.circular(30),
-            bottomLeft: Radius.circular(30),
-          ),
-          // ignore: deprecated_member_use
-          color: Colors.blue.withOpacity(.5)),
-      child: Row(
-        children: [icon, Text(str)],
-      ),
-    );
-  }
+
 
   Widget card() {
     return GridView.builder(
