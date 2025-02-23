@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:provider/provider.dart';
 
 import 'package:realestate/data.dart/data.dart';
@@ -7,23 +8,39 @@ import 'package:realestate/data.dart/data.dart';
 import 'package:realestate/provider/favorite_prvider.dart';
 import 'package:realestate/screans/sign_up.dart';
 
-class HouseDetalesScrean extends StatefulWidget {
+// ignore: must_be_immutable
+class HouseDetalesScrean extends StatelessWidget {
   const HouseDetalesScrean({
     super.key,
     required this.house,
   });
+  // @override
+  // Widget build(BuildContext context, WidgetRef ref) {
+  //   final List<Meal> favorateMeals = ref.watch(favoriteMealProvider);
+  //   final bool isFavorite = favorateMeals.contains(meal);
 
+  //   return Scaffold(
+  //     appBar: AppBar(
+  //       title: Text(meal.title),
+  //       actions: [
+  //         IconButton(
+  //             onPressed: () {
+  //               final wasAdded = ref
+  //                   .read(favoriteMealProvider.notifier)
+  //                   .toggoleMealFavoriteStatus(meal);
+  //               ScaffoldMessenger.of(context).clearSnackBars();
+  //               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+  //                   content: Text(wasAdded
+  //                       ? 'Marked as a favorite'
+  //                       : 'Meal is on longer a favorite')));
+  //             },
   final House house;
 
   @override
-  State<HouseDetalesScrean> createState() => _HouseDetalesScrean();
-}
-
-class _HouseDetalesScrean extends State<HouseDetalesScrean> {
-  bool isLiked = false;
-  @override
-  Widget build(BuildContext context) {
-    // final Provider = FavoritePrvider.of(context);
+  Widget build(
+    BuildContext context,
+  ) {
+    final provider = FavoritePrvider.of(context);
     // ignore: unused_local_variable
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -40,7 +57,7 @@ class _HouseDetalesScrean extends State<HouseDetalesScrean> {
                     width: size.width,
                     height: 333,
                     child: Image.asset(
-                      widget.house.image,
+                      house.image,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -59,7 +76,7 @@ class _HouseDetalesScrean extends State<HouseDetalesScrean> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              widget.house.price,
+                              house.price,
                               style: TextStyle(
                                   color: Colors.blueAccent,
                                   fontSize: 25,
@@ -67,20 +84,34 @@ class _HouseDetalesScrean extends State<HouseDetalesScrean> {
                             ),
                             InkWell(
                               onTap: () {
-                                setState(() {
-                                  isLiked = !isLiked;
-                                });
+                                provider.toggleFavoite(house);
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                  content: Center(
+                                    child: Text(
+                                      'saved in favorites',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          color: color,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 8, 8, 8),
+                                  shape: StadiumBorder(),
+                                  behavior: SnackBarBehavior.floating,
+                                ));
                               },
                               child: Icon(
-                                isLiked == false?
-                                    Icons.bookmark_outline
-                                    : Icons.bookmark,
+                                provider.isExist(house)
+                                    ? Icons.bookmark
+                                    : Icons.bookmark_outline,
                                 color: Colors.blueAccent,
                               ),
                             )
                           ],
                         ),
-                        Text(widget.house.name,
+                        Text(house.name,
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold)),
                         Row(
@@ -92,12 +123,12 @@ class _HouseDetalesScrean extends State<HouseDetalesScrean> {
                                   Icons.spa,
                                   size: 15,
                                 ),
-                                Text(widget.house.baths),
+                                Text(house.baths),
                                 Icon(
                                   Icons.room_service,
                                   size: 15,
                                 ),
-                                Text(widget.house.beds),
+                                Text(house.beds),
                                 Icon(
                                   Icons.home,
                                   size: 15,
@@ -105,7 +136,7 @@ class _HouseDetalesScrean extends State<HouseDetalesScrean> {
                                 Text('2')
                               ],
                             ),
-                            Text(widget.house.size)
+                            Text(house.size)
                           ],
                         ),
                         SizedBox(

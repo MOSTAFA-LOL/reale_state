@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:realestate/data.dart/language.dart';
 import 'package:realestate/provider/favorite_prvider.dart';
 
 import 'package:realestate/screans/welcome.dart';
@@ -32,6 +33,7 @@ class _MyAppState extends State<MyApp> {
     child:  MaterialApp(
       theme: ThemeData.light(),
       debugShowCheckedModeBanner: false,
+      supportedLocales: L10n.all,
       home: Welcome(),
     
     ));

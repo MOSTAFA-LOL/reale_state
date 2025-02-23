@@ -35,7 +35,7 @@ class _TapScreanState extends State<TapScrean> {
                 label: ''),
             BottomNavigationBarItem(icon: Icon(Icons.search,color: currentPage == 1 ? color: Colors.white), label: ''),
             BottomNavigationBarItem(
-                icon: Icon(Icons.favorite_border
+                icon: Icon(Icons.bookmark_outline
                 ,color: currentPage == 2 ? color: Colors.white), label: ''),
             BottomNavigationBarItem(icon: Icon(Icons.person,
             color: currentPage == 3 ? color: Colors.white), label: ''),

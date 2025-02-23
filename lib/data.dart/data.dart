@@ -111,7 +111,7 @@ List<House> realEstatemodelcard = [
 
 List<House> realEstatemodelSearch = [
   House(
-      image: 'assets/images/th (2).jpg',
+      image: 'assets/images/OIF (1).jpg',
       price: '\$1,129',
       name: 'La Grand maison',
       place: 'Mrlr,Australia',
