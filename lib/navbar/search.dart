@@ -126,10 +126,10 @@ class _SearchState extends State<Search> {
           crossAxisSpacing: 17,
           mainAxisExtent: 377),
       shrinkWrap: true,
-      itemCount: realEstatemodel.length,
+      itemCount: realEstatemodelSearch.length,
       physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) {
-        final house = realEstatemodel[index];
+        final house = realEstatemodelSearch[index];
         return GestureDetector(
           onTap: () {
             Navigator.push(

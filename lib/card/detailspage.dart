@@ -2,27 +2,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:realestate/data.dart/data2.dart';
+import 'package:realestate/data.dart/data.dart';
 import 'package:realestate/provider/favorite_prvider.dart';
 import 'package:realestate/screans/sign_up.dart';
 
-class Detailspage extends StatefulWidget {
-  const Detailspage({
-    super.key,
-    required this.home,
-  });
-  final Home home;
+class Detailspage extends StatelessWidget {
+    const Detailspage({super.key, required this.house});
+final House house;
 
   @override
-  State<Detailspage> createState() => _DetailspageState();
-}
-
-class _DetailspageState extends State<Detailspage> {
-  // ignore: non_constant_identifier_names
-  // final Provider = FavoritePrvider.of(context);
-  bool isLiked = false;
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ) {
+    final provider = FavoritePrvider.of(context);
     var screanHeight =
         MediaQuery.of(context).size.height; //to select height the screan
     return Scaffold(
@@ -36,7 +26,7 @@ class _DetailspageState extends State<Detailspage> {
               child: Column(
                 children: [
                   Image.asset(
-                    widget.home.image,
+                    house.image,
                     fit: BoxFit.cover,
                     height: screanHeight * .4,
                     width: double.infinity,
@@ -64,7 +54,7 @@ class _DetailspageState extends State<Detailspage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                widget.home.price,
+                                house.price,
                                 style: TextStyle(
                                     color: Colors.blueAccent,
                                     fontSize: 25,
@@ -72,12 +62,11 @@ class _DetailspageState extends State<Detailspage> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  setState(() {
-                                    isLiked = !isLiked;
-                                  });
+                                  provider.toggleFavoite(house);
+                                  
                                 },
                                 child: Icon(
-                                  isLiked == false
+                                  provider.isExist(house)
                                       ? Icons.bookmark_outline
                                       : Icons.bookmark,
                                   color: Colors.blueAccent,
@@ -85,7 +74,7 @@ class _DetailspageState extends State<Detailspage> {
                               )
                             ],
                           ),
-                          Text(widget.home.name,
+                          Text(house.name,
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold)),
                           Row(
@@ -97,12 +86,12 @@ class _DetailspageState extends State<Detailspage> {
                                     Icons.spa,
                                     size: 15,
                                   ),
-                                  Text(widget.home.baths),
+                                  Text(house.baths),
                                   Icon(
                                     Icons.room_service,
                                     size: 15,
                                   ),
-                                  Text(widget.home.beds),
+                                  Text(house.beds),
                                   Icon(
                                     Icons.home,
                                     size: 15,
@@ -110,7 +99,7 @@ class _DetailspageState extends State<Detailspage> {
                                   Text('2')
                                 ],
                               ),
-                              Text(widget.home.size)
+                              Text(house.size)
                             ],
                           ),
                           SizedBox(
@@ -228,4 +217,10 @@ class _DetailspageState extends State<Detailspage> {
       ),
     );
   }
-}
+} 
+  
+  
+
+
+
+

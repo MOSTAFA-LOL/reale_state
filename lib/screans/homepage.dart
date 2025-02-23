@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:realestate/card/detailspage.dart';
+
 import 'package:realestate/data.dart/data.dart';
-import 'package:realestate/data.dart/data2.dart';
-import 'package:realestate/navbar/profile.dart';
-import 'package:realestate/navbar/saved.dart';
-import 'package:realestate/navbar/search.dart';
-// import 'package:realestate/navbar/profile.dart';
-// import 'package:realestate/navbar/saved.dart';
-// import 'package:realestate/navbar/search.dart';
 import 'package:realestate/screans/housedetalesscrean.dart';
 import 'package:realestate/screans/sign_up.dart';
 
@@ -154,24 +147,25 @@ class _HomepageState extends State<Homepage> {
 
 
   Widget card() {
+    
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1,
           mainAxisSpacing: 20,
           crossAxisSpacing: 11,
           mainAxisExtent: 177),
-      itemCount: realEstatemodel2.length,
+      itemCount: realEstatemodelcard.length,
       scrollDirection: Axis.horizontal,
-      itemBuilder: (context, index1) {
-        final home = realEstatemodel2[index1];
+      itemBuilder: (context, index) {
+        final house = realEstatemodelcard[index];
         return GestureDetector(
           onTap: () {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (_) => Detailspage(
-                          home: home,
-                        )));
+                    builder: (_) => HouseDetalesScrean(house:house ,
+                      
+                      )));
             // return Detailspage3();
           },
           child: SizedBox(
@@ -188,7 +182,7 @@ class _HomepageState extends State<Homepage> {
                         bottomLeft: Radius.circular(16),
                         bottomRight: Radius.circular(16)),
                     child: Image.asset(
-                      home.image,
+                      house.image,
                       fit: BoxFit.fill,
                       width: 160,
                       height: 240,
@@ -211,7 +205,7 @@ class _HomepageState extends State<Homepage> {
                               color: Colors.yellow,
                             ),
                             Text(
-                              home.rate,
+                              house.rate,
                               style: TextStyle(fontSize: 12),
                             )
                           ],
@@ -236,7 +230,7 @@ class _HomepageState extends State<Homepage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        home.name,
+                        house.name,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
@@ -250,7 +244,7 @@ class _HomepageState extends State<Homepage> {
                             color: Colors.white,
                           ),
                           Text(
-                            home.place,
+                            house.place,
                             style: TextStyle(
                                 // ignore: deprecated_member_use
                                 color: Colors.white.withOpacity(.8)),
@@ -352,36 +346,6 @@ class _HomepageState extends State<Homepage> {
         );
       },
     );
-    // return ListView(
 
-    //   children: [
-    //     Container(
-    //       child: Image.asset('assets/images/OIF (1).jpg')
-    //     ),
-    //     Container(
-    //       // color: const Color.fromARGB(255, 88, 87, 84),
-    //       child: Image.asset('assets/images/OIF (1).jpg')
-
-    //     ),
-    //     Container(
-    //       // color: const Color.fromARGB(255, 14, 11, 3),
-    //       child: Image.asset('assets/images/OIF (1).jpg')
-    //     ),
-    //     Container(
-    //       // color: const Color.fromARGB(255, 10, 173, 179),
-    //       child: Image.asset('assets/images/OIF (1).jpg')
-    //     ),
-    //   ],
-
-    // Container(
-    //     padding: EdgeInsets.all(20),
-    // margin: EdgeInsets.only(right: 8),
-    //     decoration:
-    //         BoxDecoration(color: Colors.grey.withOpacity(.15),
-    //         borderRadius: BorderRadius.circular(16)),
-    //     child: Text('data')
-    // Image.asset('assets/images/OIF (1).jpg')
-    //       ),
-    // Image.asset('assets/images/OIF (1).jpg'),
   }
 }

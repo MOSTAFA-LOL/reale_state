@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:realestate/data.dart/data.dart';
 // import 'package:provider/provider.dart';
-import 'package:realestate/data.dart/data2.dart';
+
 
 class FavoritePrvider extends ChangeNotifier {
-  final List<Home> _favorite = [];
-  List<Home> get favorites => _favorite;
-  void toggleFavoite(Home home) {
-    if (_favorite.contains(home)) {
-      _favorite.remove(home);
+  final List<House> _favorite = [];
+  List<House> get favorites => _favorite;
+  void toggleFavoite(House house) {
+    if (_favorite.contains(house)) {
+      _favorite.remove(house);
     } else {
-      _favorite.add(home);
+      _favorite.add(house);
     }
     notifyListeners();
   }
 
-  bool isExist(Home home) {
-    final isExist = _favorite.contains(home);
+  bool isExist(House house) {
+    final isExist = _favorite.contains(house);
     return isExist;
   }
 
