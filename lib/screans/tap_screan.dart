@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:realestate/data.dart/data.dart';
 import 'package:realestate/navbar/profile.dart';
 import 'package:realestate/navbar/saved.dart';
 import 'package:realestate/navbar/search.dart';

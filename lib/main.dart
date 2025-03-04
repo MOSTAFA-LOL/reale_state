@@ -5,11 +5,12 @@ import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:realestate/Theme/theme.dart';
 import 'package:realestate/generated/l10n.dart';
+import 'package:realestate/provider/book_provider.dart';
 import 'package:realestate/provider/favorite_prvider.dart';
 
 import 'package:realestate/screans/tap_screan.dart';
 import 'package:realestate/screans/welcome.dart';
-import 'package:theme_provider/theme_provider.dart';
+
 
 void main() async {
   await GetStorage.init();
@@ -25,26 +26,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // @override
-  // void dispose() {
-  //   _themeManger.removeListener(themeListener);
-  //   super.dispose();
-  // }
-
-  // @override
-  // void initState() {
-  //   _themeManger.addListener(themeListener);
-  //   super.initState();
-  // }
-
-  // themeListener() {
-  //   if (mounted) {
-  //     setState(() {});
-  //   }
-  // }
   @override
   Widget build(BuildContext context) => MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => FavoritePrvider())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => BookProvider()),
+        ChangeNotifierProvider(create: (_) => FavoritePrvider())],
       child: GetMaterialApp(
           theme: ThemeService().lightTheme,
           darkTheme: ThemeService().darkTheme,

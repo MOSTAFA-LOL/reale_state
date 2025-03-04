@@ -1,11 +1,20 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:realestate/Theme/theme.dart';
-
+import 'package:realestate/data.dart/data.dart';
+import 'package:realestate/navbar/saved.dart';
+import 'package:realestate/provider/book_provider.dart';
+import 'package:realestate/screans/bookingScreen.dart';
+import 'package:realestate/screans/bookpage.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({super.key});
+  const Profile({
+    super.key,
+    
+  });
+  
 
   @override
   State<Profile> createState() => _ProfileState();
@@ -15,7 +24,8 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     final moonIcon = CupertinoIcons.moon_stars;
-    final sunIcon = CupertinoIcons.sun_max;
+    // final sunIcon = CupertinoIcons.sun_max;
+    final provider = BookProvider.of(context);
     return Scaffold(
         body: SingleChildScrollView(
       child: Padding(
@@ -70,50 +80,69 @@ class _ProfileState extends State<Profile> {
             Divider(),
             Column(
               children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.calendar_month_outlined,
-                      // ignore: deprecated_member_use
-                      color: Colors.black.withOpacity(.7),
-                    ),
-                    SizedBox(
-                      width: 7,
-                    ),
-                    Text(
-                      'My Booking',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      width: 180,
-                    ),
-                    Icon(Icons.keyboard_arrow_right)
-                  ],
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Bookpage(),
+                        ));
+                  },
+                  child: Row(
+                          children: [
+                            Icon(
+                              Icons.calendar_month_outlined,
+                              // ignore: deprecated_member_use
+                              color: Colors.black.withOpacity(.7),
+                            ),
+                            SizedBox(
+                              width: 7,
+                            ),
+                            Text(
+                              'My Booking',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              width: 180,
+                            ),
+                            Icon(Icons.keyboard_arrow_right)
+                          ],
+                        ),
                 ),
+              
                 SizedBox(
                   height: 20,
                 ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.payment,
-                      // ignore: deprecated_member_use
-                      color: Colors.black.withOpacity(.7),
-                    ),
-                    SizedBox(
-                      width: 7,
-                    ),
-                    Text(
-                      'Saved',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      width: 218,
-                    ),
-                    Icon(
-                      Icons.keyboard_arrow_right,
-                    ),
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Saved(),
+                        ));
+                  },
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.payment,
+                        // ignore: deprecated_member_use
+                        color: Colors.black.withOpacity(.7),
+                      ),
+                      SizedBox(
+                        width: 7,
+                      ),
+                      Text(
+                        'Saved',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: 218,
+                      ),
+                      Icon(
+                        Icons.keyboard_arrow_right,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -195,11 +224,9 @@ class _ProfileState extends State<Profile> {
                 SizedBox(
                   height: 20,
                 ),
-
                 SizedBox(
                   height: 20,
                 ),
-          
                 Row(
                   children: [
                     Icon(
@@ -224,6 +251,12 @@ class _ProfileState extends State<Profile> {
       ),
     ));
   }
+
+
+
+
+
+
 }
  //محاذاه الي اليمين
           

@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 
 import 'package:realestate/data.dart/data.dart';
+import 'package:realestate/provider/book_provider.dart';
 // import 'package:realestate/data.dart/data2.dart';
 import 'package:realestate/provider/favorite_prvider.dart';
+import 'package:realestate/screans/bookingScreen.dart';
 import 'package:realestate/screans/sign_up.dart';
 
 // ignore: must_be_immutable
@@ -17,6 +19,7 @@ class HouseDetalesScrean extends StatelessWidget {
   Widget build(BuildContext context) {
     // final theme = Theme.of(context);
     final provider = FavoritePrvider.of(context);
+    
 
     return Scaffold(
       body: CustomScrollView(
@@ -56,12 +59,14 @@ class HouseDetalesScrean extends StatelessWidget {
         background: Stack(
           children: [
             ClipRRect(
-              borderRadius: const BorderRadius.vertical(bottom: Radius.circular(24)),
+              borderRadius:
+                  const BorderRadius.vertical(bottom: Radius.circular(24)),
               child: Image.asset(house.image, fit: BoxFit.cover),
             ),
             const DecoratedBox(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.vertical(bottom: Radius.circular(24)),
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(24)),
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -85,7 +90,8 @@ class HouseDetalesScrean extends StatelessWidget {
   }
 
   // -------------------- Price & Bookmark --------------------
-  Widget _buildPriceAndBookmark(FavoritePrvider provider, BuildContext context) {
+  Widget _buildPriceAndBookmark(
+      FavoritePrvider provider, BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -100,14 +106,14 @@ class HouseDetalesScrean extends StatelessWidget {
         IconButton(
           iconSize: 36,
           icon: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 200),
             child: Icon(
-              provider.isExist(house) 
-                  ? Icons.bookmark 
-                  : Icons.bookmark_outline,
+              provider.isExist(house) ? Icons.bookmark : Icons.bookmark_outline,
               key: ValueKey<bool>(provider.isExist(house)),
             ),
-        ), onPressed: () =>_toggleFavorite(provider, context),)
+          ),
+          onPressed: () => _toggleFavorite(provider, context),
+        )
       ],
     );
   }
@@ -181,11 +187,9 @@ class HouseDetalesScrean extends StatelessWidget {
                 ),
               ),
               IconButton(
-                icon: Icon(Icons.info_outline,
-                  color: color),
-                onPressed: () {}
-                // => _showLoanDetails(context),
-              ),
+                  icon: Icon(Icons.info_outline, color: color), onPressed: () {}
+                  // => _showLoanDetails(context),
+                  ),
             ],
           ),
         ),
@@ -203,14 +207,15 @@ class HouseDetalesScrean extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: AspectRatio(
-            aspectRatio: 16/9,
+            aspectRatio: 16 / 9,
             child: Image.asset(
               'assets/images/map.png',
               fit: BoxFit.cover,
-              errorBuilder: (_, __, ___) => 
-                const Center(child: Icon(Icons.error_outline)),
+              errorBuilder: (_, __, ___) =>
+                  const Center(child: Icon(Icons.error_outline)),
+            ),
           ),
-        ),)
+        )
       ],
     );
   }
@@ -247,46 +252,52 @@ class HouseDetalesScrean extends StatelessWidget {
     );
   }
 
-  Widget _buildBookButton(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: color,
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
-        ),
+Widget _buildBookButton(BuildContext context) {
+  return ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: color,
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24),
       ),
-      onPressed: () 
-      => _showBookingConfirmation(context),
-      child: const Text(
-        'Book Now',
+    ),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => BookingsScreen(house: house),
+        ),
+      );
+    },
+    child: const Text(
+      'Book Now',
+      style: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+      ),
+    ),
+  );
+}
+
+  void _showBookingConfirmation(BuildContext context) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: const Text(
+        '!Booking confirmed successfully',
+        textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 16,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
+          fontWeight: FontWeight.w600,
         ),
       ),
-    );
-  }
-    void _showBookingConfirmation(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text(
-          'Successfully Booked',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        backgroundColor: Colors.green.shade600,
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24)),
-        margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-      ),
-    );
-  }
+      backgroundColor: Colors.green.shade600,
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+      margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+    ),
+  );
+}
 
   // -------------------- Helper Methods --------------------
   Widget _buildSectionTitle(String title) {
@@ -305,13 +316,14 @@ class HouseDetalesScrean extends StatelessWidget {
     _showFavoriteSnackbar(context, provider.isExist(house));
   }
 
+
   void _showFavoriteSnackbar(BuildContext context, bool isFavorite) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(isFavorite ? Icons.favorite : Icons.favorite_border, 
+            Icon(isFavorite ? Icons.favorite : Icons.favorite_border,
                 color: Colors.white),
             const SizedBox(width: 8),
             Text(isFavorite ? 'Added to Favorites' : 'Removed from Favorites'),
