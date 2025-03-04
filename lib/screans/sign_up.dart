@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:realestate/screans/homepage.dart';
+// import 'package:flutter_svg/flutter_svg.dart';
+import 'package:realestate/generated/l10n.dart';
+// import 'package:realestate/screans/homepage.dart';
+import 'package:realestate/screans/register.dart';
+// import 'package:realestate/screans/homepage.dart';
 import 'package:realestate/screans/tap_screan.dart';
 
 class SignUp extends StatefulWidget {
@@ -13,210 +16,118 @@ class SignUp extends StatefulWidget {
 Color color = Colors.blueAccent;
 
 class _SignUpState extends State<SignUp> {
+  final _formKey = GlobalKey<FormState>();
+  String?  email, password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SizedBox(
-          height: double.infinity,
-          width: double.infinity,
-          child: SingleChildScrollView(
-            child: Column(children: [
+      appBar: AppBar(
+        title: Text('Login',
+        ),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: [
+              Image.asset(
+                'assets/images/R.png', // Replace with your image path
+
+                height: 200, // Adjust the height as needed
+              ),
+              SizedBox(height: 15),
+              Text(
+                S.of(context).login_title2,
+              ),
               SizedBox(
-                width: double.infinity,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 35,
-                    ),
-                    Text(
-                      "Log in",
-                      style: TextStyle(
-                        color: color,
-                        fontSize: 33,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Image.asset(
-                      "assets/images/R.png",
-                      width: 170,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      'Please Enter Your Email',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(
-                            255, 165, 167, 172),
-                        borderRadius: BorderRadius.circular(66),
-                      ),
-                      width: 266,
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: TextField(
-                        decoration: InputDecoration(
-                            icon: Icon(
-                              Icons.person,
-                              color: const Color.fromARGB(
-                                  255, 0, 0, 0),
-                            ),
-                            hintText: "Your Email :",
-                            border: InputBorder.none),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(
-                            255, 165, 167, 172),
-                        borderRadius: BorderRadius.circular(66),
-                      ),
-                      width: 266,
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: TextField(
-                        obscureText: true,
-                        decoration: InputDecoration(
-                            suffix: Icon(
-                              Icons.visibility,
-                              color: const Color.fromARGB(
-                                  255, 0, 0, 0),
-                            ),
-                            icon: Icon(
-                              Icons.lock,
-                              color: const Color.fromARGB(
-                                  255, 0, 0, 0),
-                              size: 19,
-                            ),
-                            hintText: "Password :",
-                            border: InputBorder.none),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context, 
-                            MaterialPageRoute(
-                                builder: (_) => TapScrean()));
-                      },
-                      style: ButtonStyle(
-                        backgroundColor:
-                            WidgetStateProperty.all(color),
-                        padding: WidgetStateProperty.all(
-                            EdgeInsets.symmetric(
-                                horizontal: 106, vertical: 10)),
-                        shape: WidgetStateProperty.all(
-                            RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.circular(27))),
-                      ),
-                      child: Text(
-                        "login",
-                        style: TextStyle(
-                            color: Colors.white, fontSize: 24),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                      width: 300,
-                      child: Row(
-                        children: [
-                          Expanded(
-                              child: Divider(
-                            thickness: .6,
-                            color: color,
-                          )),
-                          Text('OR'),
-                          Expanded(
-                              child: Divider(
-                            thickness: .6,
-                            color: Colors.lightBlue,
-                          )),
-                        ],
-                      ),
-                    ),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              padding: EdgeInsets.all(13),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      color: const Color.fromARGB(
-                                          255, 76, 74, 77),
-                                      width: 1)),
-                              child: SvgPicture.asset(
-                                "assets/icons/facebook.svg",
-                                // ignore: deprecated_member_use
-                                color: Colors.blueAccent,
-                                height: 27,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 22,
-                          ),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              padding: EdgeInsets.all(13),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      color: const Color.fromARGB(
-                                          255, 76, 74, 77),
-                                      width: 1)),
-                              child: SvgPicture.asset(
-                                "assets/icons/google-plus.svg",
-                                // ignore: deprecated_member_use
-                                color: Colors.blueAccent,
-                                height: 27,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 22,
-                          ),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              padding: EdgeInsets.all(13),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      color: const Color.fromARGB(
-                                          255, 76, 74, 77),
-                                      width: 1)),
-                              child: SvgPicture.asset(
-                                "assets/icons/twitter.svg",
-                                // ignore: deprecated_member_use
-                                color: color,
-                                height: 27,
-                              ),
-                            ),
-                          ),
-                        ])
-                  ],
+                height: 10,
+              ),
+
+              TextFormField(
+                decoration: InputDecoration(
+                  labelStyle: TextStyle(color: Colors.black,),
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.blue),)
                 ),
-              )
-            ]),
-          )));
+                keyboardType: TextInputType.emailAddress,
+                onSaved: (value) => email = value,
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'Please enter your email';
+                  }
+                  if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+                    return 'Please enter a valid email address';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              // password
+              TextFormField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelStyle: TextStyle(color: color,),
+                  focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.blue),),
+                  suffix: Icon(
+                    Icons.visibility,
+                    color: const Color.fromARGB(255, 0, 0, 0),
+                  ),
+                  hintText: S.of(context).text_field1,
+                  border: OutlineInputBorder(),
+                ),
+                onSaved: (value) => password = value,
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'Please enter your password';
+                  }else{
+                  return null;
+                  }
+                  
+                },
+              ),
+              SizedBox(
+                height: 10,
+              ),
+            ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState?.validate() ?? false) {
+                    _formKey.currentState!.save();
+                  
+                    // ignore: avoid_print
+                    print('$email');
+                    // ignore: avoid_print
+                    print('$password');
+                    // Process the registration data here
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('access the gmail')),
+                    );
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) => TapScrean()));
+                  }
+                },
+                child: Text('Log In',
+                style: TextStyle(color: color),),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Register(),));
+                  },
+                  child: Center(child: Text('Sign Up to new account',
+                  style: TextStyle(color: color),)))
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

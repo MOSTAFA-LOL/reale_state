@@ -1,0 +1,28 @@
+{
+
+    "search" : "search",
+    
+    "title_name" : "For RealEstate",
+    "title_desc" : "CONNECTING YOU TO YOUR IDEA HOME",
+    "title_in" : "welcome",
+
+
+
+    "welcome"  :"welcome TO RealEstate",
+    "welcome_t0"  :"lets Get You Closer ",
+    "tO"  :"TO",
+    "welcome_for"  :"Your Ideal Home",
+    "login_title"  :"login to RealEstate with gmail",
+    "register"  :"Register",
+    "make_sure"  :"Alrealy have an account?",
+    "ontap"  :"Log in",
+
+
+
+    
+    "login_title2" : "Please Enter YOUR Email",
+    "text_field" : "YOUR Email",
+    "text_field1" : "password"
+
+
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:realestate/generated/l10n.dart';
 import 'package:realestate/screans/login.dart';
 
 class Welcome extends StatefulWidget {
@@ -29,7 +30,7 @@ class _WelcomeState extends State<Welcome> {
         SizedBox(
           height: 2,
         ),
-        Text('For RealEstate',
+        Text(S.of(context).title_name,
             style: TextStyle(
                 color: const Color.fromARGB(193, 17, 22, 32),
                 fontWeight: FontWeight.bold,
@@ -38,7 +39,7 @@ class _WelcomeState extends State<Welcome> {
           height: 10,
         ),
         Text(
-          'CONNECTING YOU TO YOUR IDEA HOME',
+          S.of(context).title_desc,
           // ignore: deprecated_member_use
           style: TextStyle(color: Colors.black87.withOpacity(.6)),
         ),
@@ -52,7 +53,7 @@ class _WelcomeState extends State<Welcome> {
           },
           style: ButtonStyle(
               backgroundColor: WidgetStateProperty.all(Colors.blueAccent)),
-          child: Text('Get Started',
+          child: Text(S.of(context).title_in,
               style: TextStyle(
                   color: const Color.fromARGB(235, 253, 253, 253),
                   fontWeight: FontWeight.bold)),

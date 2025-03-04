@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:realestate/screans/homepage.dart';
+import 'package:realestate/generated/l10n.dart';
+import 'package:realestate/screans/register.dart';
+// import 'package:realestate/screans/homepage.dart';
 import 'package:realestate/screans/sign_up.dart';
-import 'package:realestate/screans/tap_screan.dart';
+// import 'package:realestate/screans/tap_screan.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -19,24 +21,23 @@ class _LoginState extends State<Login> {
           Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:40),
+                padding: const EdgeInsets.symmetric(horizontal: 46),
                 child: Image.asset('assets/images/onboarding.png'),
-                
               ),
-                Text(
-            'Welcome To RealEstate',
-            style: TextStyle(fontWeight: FontWeight.w200),
-          ),
-          SizedBox(height: 20,)
+              Text(
+                S.of(context).welcome,
+                style: TextStyle(fontWeight: FontWeight.w200),
+              ),
+              SizedBox(
+                height: 5,
+              )
             ],
           ),
-        
-
           Column(
             children: [
               Center(
                 child: Text(
-                  'lets Get You Closer ',
+                  S.of(context).welcome_t0,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                 ),
               ),
@@ -46,14 +47,14 @@ class _LoginState extends State<Login> {
                     // Start with the default style from the current context
                     // style: DefaultTextStyle.of(context).style,
                     children: <TextSpan>[
-                      const TextSpan(
-                          text: 'to',
+                      TextSpan(
+                          text: S.of(context).tO,
                           style: TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
                               fontSize: 30,
                               fontWeight: FontWeight.bold)),
                       TextSpan(
-                        text: 'Your Ideal home',
+                        text: S.of(context).welcome_for,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.blueAccent,
@@ -64,7 +65,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Text(
-                'login to RealEstate with gmail',
+                S.of(context).login_title,
                 style: TextStyle(fontWeight: FontWeight.bold),
               )
             ],
@@ -73,11 +74,8 @@ class _LoginState extends State<Login> {
             height: 20,
           ),
           GestureDetector(
-              onTap: (
-                ()=> Navigator.push(
-                                        context, 
-                                        MaterialPageRoute(
-                                            builder: (_) => TapScrean()))),
+              onTap: (() => Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => SignUp()))),
               child: Container(
                 height: 50,
                 width: 130,
@@ -86,44 +84,41 @@ class _LoginState extends State<Login> {
                     color: Colors.blueAccent),
                 child: Center(
                   child: Text(
-                    'Register',
+                    S.of(context).register,
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
               )),
-              SizedBox(height: 7,),
-                GestureDetector(
-                    onTap: (
-                      () => Navigator.push(
-                                        context, 
-                                        MaterialPageRoute(
-                                            builder: (_) => SignUp()))),
-                  child: Center(
-                  child: RichText(
-                    text: TextSpan(
-                      // Start with the default style from the current context
-                      // style: DefaultTextStyle.of(context).style,
-                      children: <TextSpan>[
-                        const TextSpan(
-                            text: 'Alrealy have an account?  ',
-                            style: TextStyle(
-                                color: Colors.black38,
-                                
-                                )),
-                                
-                        TextSpan(
-                          text: 'Log in',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blueAccent,
-                              ),
-                        ),
-                      ],
+          SizedBox(
+            height: 7,
+          ),
+          GestureDetector(
+            onTap: (() => Navigator.push(
+                context, MaterialPageRoute(builder: (_) => Register()))),
+            child: Center(
+              child: RichText(
+                text: TextSpan(
+                  // Start with the default style from the current context
+                  // style: DefaultTextStyle.of(context).style,
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: S.of(context).make_sure,
+                        style: TextStyle(
+                          color: Colors.black38,
+                        )),
+                    TextSpan(
+                      text: S.of(context).ontap,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueAccent,
+                      ),
                     ),
-                  ),),
-                )
-              
+                  ],
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
