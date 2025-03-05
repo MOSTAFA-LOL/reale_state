@@ -3,10 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:realestate/Theme/theme.dart';
-import 'package:realestate/data.dart/data.dart';
 import 'package:realestate/navbar/saved.dart';
 import 'package:realestate/provider/book_provider.dart';
-import 'package:realestate/screans/bookingScreen.dart';
 import 'package:realestate/screans/bookpage.dart';
 
 class Profile extends StatefulWidget {
@@ -25,7 +23,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     final moonIcon = CupertinoIcons.moon_stars;
     // final sunIcon = CupertinoIcons.sun_max;
-    final provider = BookProvider.of(context);
+    BookProvider.of(context);
     return Scaffold(
         body: SingleChildScrollView(
       child: Padding(

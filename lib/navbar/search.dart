@@ -1,4 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
+
 import 'package:realestate/data.dart/data.dart';
 
 import 'package:realestate/screans/housedetalesscrean.dart';
@@ -8,27 +11,30 @@ class Search extends StatelessWidget {
   final String propertyKey;
   final String propertyValue;
   final String propertyImage;
-  
+
   const Search({
-    super.key, required this.propertyKey, required this.propertyValue, required this.propertyImage, 
+    super.key,
+    required this.propertyKey,
+    required this.propertyValue,
+    required this.propertyImage,
     
   });
+  
 
   @override
   Widget build(BuildContext context) {
-    return 
-    Scaffold(
+    return Scaffold(
       appBar: AppBar(
-    centerTitle: true,
-    title: const Text(
-      'Search Properties',
-      style: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.w600,
-        letterSpacing: 0.5,
+        centerTitle: true,
+        title: const Text(
+          'Search Properties',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.5,
+          ),
+        ),
       ),
-    ),
-  ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Padding(
@@ -36,42 +42,43 @@ class Search extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              
               Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).cardColor,
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
-                  blurRadius: 8,
-                  offset: const Offset(0, 4),)
-              ],
-            ),
-            child: TextField(
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.transparent,
-                border: InputBorder.none,
-                prefixIcon: Icon(
-                  Icons.search,
-                  color: Theme.of(context).hintColor,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).cardColor,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      // ignore: deprecated_member_use
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 8,
+                      offset: const Offset(0, 4),
+                    )
+                  ],
                 ),
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    Icons.tune,
-                    color: Theme.of(context).primaryColor,
+                child: TextField(
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.transparent,
+                    border: InputBorder.none,
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: Theme.of(context).hintColor,
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        Icons.tune,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      onPressed: () {},
+                    ),
+                    hintText: 'Search properties...',
+                    hintStyle: TextStyle(
+                      color: Theme.of(context).hintColor,
+                      fontSize: 15,
+                    ),
                   ),
-                  onPressed: () {},
-                ),
-                hintText: 'Search properties...',
-                hintStyle: TextStyle(
-                  color: Theme.of(context).hintColor,
-                  fontSize: 15,
                 ),
               ),
-            ),
-          ),
               Container(
                 padding: EdgeInsets.only(left: 10),
                 width: double.infinity,
@@ -90,22 +97,17 @@ class Search extends StatelessWidget {
     );
   }
 
-
-
-
-
   Widget secondCard() {
-  return GridView.builder(
-    shrinkWrap: true,
-    physics: const NeverScrollableScrollPhysics(),
-    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-      crossAxisCount: 1,
-      mainAxisSpacing: 16,
-      crossAxisSpacing: 16,
-      mainAxisExtent: 400,
-    ),
-    itemCount: realEstatemodelSearch.length,
-
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 1,
+        mainAxisSpacing: 16,
+        crossAxisSpacing: 16,
+        mainAxisExtent: 355,
+      ),
+      itemCount: realEstatemodelSearch.length,
       itemBuilder: (context, index) {
         final house = realEstatemodelSearch[index];
         return GestureDetector(
@@ -135,7 +137,7 @@ class Search extends StatelessWidget {
                       fit: BoxFit.cover,
                     )),
                 SizedBox(
-                  height: 4,
+                  height: 10,
                 ),
                 Row(
                   children: [
@@ -143,24 +145,30 @@ class Search extends StatelessWidget {
                       house.name,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 2,),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Spacer(),
                     _buildSaleBadge(context)
                   ],
                 ),
+                SizedBox(
+                      height: 5,
+                    ),
                 Text(
                   house.place,
                   style: TextStyle(fontWeight: FontWeight.w300),
                 ),
-                SizedBox(height: 5,),
+                SizedBox(
+                  height: 10,
+                ),
                 Text(
                   house.price,
                   style: TextStyle(color: color),
                 ),
-                SizedBox(height: 5,),
-                Spacer(),
-                _buildBookButton(context)
-                
+                SizedBox(
+                  height: 5,
+                ),
               ],
             ),
           ),
@@ -168,7 +176,11 @@ class Search extends StatelessWidget {
       },
     );
   }
-    Widget _buildSaleBadge(BuildContext context) {
+
+
+  
+
+  Widget _buildSaleBadge(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       decoration: BoxDecoration(
@@ -178,53 +190,56 @@ class Search extends StatelessWidget {
       child: Text(
         'For Sale',
         style: TextStyle(
-        color: const Color.fromARGB(157, 18, 126, 4),
+          color: const Color.fromARGB(157, 18, 126, 4),
           fontSize: 12,
           fontWeight: FontWeight.w600,
         ),
       ),
     );
   }
-    Widget _buildBookButton(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: color,
-          foregroundColor: Colors.white,
-          padding: const EdgeInsets.symmetric(vertical: 14),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(24),
-          ),
-        ),
-        onPressed: () => _showBookingConfirmation(context),
-        child: const Text(
-          'Book Now',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
-    );
-  }
-    void _showBookingConfirmation(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text(
-          'Successfully Booked',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        backgroundColor: Colors.green.shade600,
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24)),
-        margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-      ),
-    );
-  }
+
+  // Widget _buildBookButton(BuildContext context) {
+  //   return SizedBox(
+  //     width: double.infinity,
+  //     child: ElevatedButton(
+  //       style: ElevatedButton.styleFrom(
+  //         backgroundColor: color,
+  //         foregroundColor: Colors.white,
+  //         padding: const EdgeInsets.symmetric(vertical: 14),
+  //         shape: RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.circular(24),
+  //         ),
+  //       ),
+  //       onPressed: () {
+        
+  //       },
+  //       child: const Text(
+  //         'more details',
+  //         style: TextStyle(
+  //           fontSize: 16,
+  //           fontWeight: FontWeight.w600,
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
+
+//   void _showBookingConfirmation(BuildContext context) {
+//     ScaffoldMessenger.of(context).showSnackBar(
+//       SnackBar(
+//         content: const Text(
+//           'Successfully Booked',
+//           textAlign: TextAlign.center,
+//           style: TextStyle(
+//             fontSize: 16,
+//             fontWeight: FontWeight.w600,
+//           ),
+//         ),
+//         backgroundColor: Colors.green.shade600,
+//         behavior: SnackBarBehavior.floating,
+//         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+//         margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+//       ),
+//     );
+//   }
 }

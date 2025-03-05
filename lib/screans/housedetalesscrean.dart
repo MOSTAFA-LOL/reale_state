@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:provider/provider.dart';
 
@@ -7,7 +8,7 @@ import 'package:realestate/data.dart/data.dart';
 import 'package:realestate/provider/book_provider.dart';
 // import 'package:realestate/data.dart/data2.dart';
 import 'package:realestate/provider/favorite_prvider.dart';
-import 'package:realestate/screans/bookingScreen.dart';
+
 import 'package:realestate/screans/sign_up.dart';
 
 // ignore: must_be_immutable
@@ -77,15 +78,8 @@ class HouseDetalesScrean extends StatelessWidget {
           ],
         ),
       ),
-      pinned: true,
-      // actions: [
-      //   IconButton(
-      //     icon: const Icon(Icons.share),
-      //     onPressed: () {}
-      //     // => _shareProperty(context
-      //     // ),
-      //   ),
-      // ],
+      
+      
     );
   }
 
@@ -241,6 +235,7 @@ class HouseDetalesScrean extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
+        // ignore: deprecated_member_use
         color: color.withOpacity(0.1),
         shape: BoxShape.circle,
       ),
@@ -253,6 +248,7 @@ class HouseDetalesScrean extends StatelessWidget {
   }
 
 Widget _buildBookButton(BuildContext context) {
+  final bookProvider = context.read<BookProvider>();
   return ElevatedButton(
     style: ElevatedButton.styleFrom(
       backgroundColor: color,
@@ -262,15 +258,11 @@ Widget _buildBookButton(BuildContext context) {
       ),
     ),
     onPressed: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => BookingsScreen(house: house),
-        ),
-      );
+      bookProvider.bookHouse(house);
+                Navigator.pop(context);
+                _showBookingConfirmation(context);
     },
-    child: const Text(
-      'Book Now',
+    child: Text('Booking now',
       style: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.bold,
@@ -280,11 +272,23 @@ Widget _buildBookButton(BuildContext context) {
   );
 }
 
+
+  // -------------------- Helper Methods --------------------
+  Widget _buildSectionTitle(String title) {
+    return Text(
+      title,
+      style: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        color: Colors.grey.shade800,
+      ),
+    );
+  }
   void _showBookingConfirmation(BuildContext context) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: const Text(
-        '!Booking confirmed successfully',
+        'Booking confirmed successfully!',
         textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 16,
@@ -298,18 +302,6 @@ Widget _buildBookButton(BuildContext context) {
     ),
   );
 }
-
-  // -------------------- Helper Methods --------------------
-  Widget _buildSectionTitle(String title) {
-    return Text(
-      title,
-      style: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
-        color: Colors.grey.shade800,
-      ),
-    );
-  }
 
   void _toggleFavorite(FavoritePrvider provider, BuildContext context) {
     provider.toggleFavoite(house);

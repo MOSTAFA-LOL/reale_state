@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:realestate/data.dart/data.dart';
+
 import 'package:realestate/navbar/profile.dart';
 import 'package:realestate/navbar/saved.dart';
 import 'package:realestate/navbar/search.dart';
+import 'package:realestate/screans/bookpage.dart';
 import 'package:realestate/screans/homepage.dart';
 import 'package:realestate/screans/sign_up.dart';
 
@@ -50,6 +51,11 @@ class _TapScreanState extends State<TapScrean> {
       label: 'Saved',
     ),
     BottomNavigationBarItem(
+      icon: Icon(Icons.add_shopping_cart_sharp),
+      activeIcon: Icon(Icons.shopping_cart),
+      label: 'orders',
+    ),
+    BottomNavigationBarItem(
       icon: Icon(Icons.person_outline),
       activeIcon: Icon(Icons.person),
       label: 'Profile',
@@ -62,8 +68,9 @@ class _TapScreanState extends State<TapScrean> {
           onPageChanged: (index) {},
           children: [
             Homepage(),
-            Search(propertyKey: '',  propertyImage: '', propertyValue: '',),
+            Search(propertyKey: '',  propertyImage: '', propertyValue: '', ),
             Saved(),
+            Bookpage(),
             Profile(),
           ]),
     );

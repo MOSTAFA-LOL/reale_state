@@ -412,7 +412,7 @@ void _navigateToSearch(BuildContext context, PropertyType property) {
       builder: (_) => Search(
         propertyKey: property.key,
         propertyValue: property.value,
-        propertyImage: property.image,
+        propertyImage: property.image, 
       ),
     ),
   );

@@ -119,7 +119,7 @@ List<House> realEstatemodelcard = [
       id: '',
       description: description, city: '', details: '', company: '', location: '', status: ''),
   House(
-      image: 'assets/images/bec1a4fa3ce5cd83809725ef5dc9e9a9.jpg',
+      image: 'assets/images/759668028-800x600.jpeg',
       price: '\$5,122',
       name: 'nature place',
       place: 'lolwa,England',
