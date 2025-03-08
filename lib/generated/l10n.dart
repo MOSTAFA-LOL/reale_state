@@ -165,9 +165,54 @@ class S {
     return Intl.message('YOUR Email', name: 'text_field', desc: '', args: []);
   }
 
+  /// `Please enter a valid email address`
+  String get text_field12 {
+    return Intl.message(
+      'Please enter a valid email address',
+      name: 'text_field12',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your password`
+  String get text_field22 {
+    return Intl.message(
+      'Please enter your password',
+      name: 'text_field22',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `access the gmail`
+  String get text_field13 {
+    return Intl.message(
+      'access the gmail',
+      name: 'text_field13',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Up to new account`
+  String get text_signup {
+    return Intl.message(
+      'Sign Up to new account',
+      name: 'text_signup',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `password`
   String get text_field1 {
     return Intl.message('password', name: 'text_field1', desc: '', args: []);
+  }
+
+  /// `Register`
+  String get title_register {
+    return Intl.message('Register', name: 'title_register', desc: '', args: []);
   }
 }
 

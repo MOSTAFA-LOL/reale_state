@@ -84,18 +84,20 @@ class _HomepageState extends State<Homepage> {
                       style: TextStyle(
                           fontSize: 10,
                           // ignore: deprecated_member_use
-                          color: color),
+                          color: color,
+                          fontStyle: FontStyle.italic),
                     ),
                     Text(
                       'Andrian hajdin',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.titleMedium, 
+                        
                     ),
                   ]),
               Spacer(),
             ]),
             Text(
               'Property Types',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              style: Theme.of(context).textTheme.titleLarge,
             ),
           SingleChildScrollView(
   scrollDirection: Axis.horizontal,
@@ -144,6 +146,7 @@ class _HomepageState extends State<Homepage> {
           imagePath: "assets/images/Shop_1.png",
           label: "Shop",
           imageWidth: 27,
+          
         ),
       ],
     ),
@@ -160,7 +163,8 @@ class _HomepageState extends State<Homepage> {
                   padding: const EdgeInsets.only(left: 7),
                   child: Text(
                     'Featured',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    style: Theme.of(context).textTheme.titleLarge,
+                    // TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                 ),
                 Padding(
@@ -244,7 +248,7 @@ class _HomepageState extends State<Homepage> {
             boxShadow: [
               BoxShadow(
                 // ignore: deprecated_member_use
-                color: Colors.black.withOpacity(0.1),
+                color: const Color.fromARGB(255, 0, 0, 0).withOpacity(0.1),
                 blurRadius: 6,
                 offset: const Offset(0, 3),
                 )
@@ -314,11 +318,7 @@ class _HomepageState extends State<Homepage> {
                     children: [
                       Text(
                         house.name,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).textTheme.titleLarge,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -334,11 +334,7 @@ class _HomepageState extends State<Homepage> {
                           const SizedBox(width: 4),
                           Text(
                             house.place,
-                            style: TextStyle(
-                              // ignore: deprecated_member_use
-                              color: Colors.white.withOpacity(0.9),
-                              fontSize: 14,
-                            ),
+                            style: Theme.of(context).textTheme.titleMedium,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -369,26 +365,15 @@ class _HomepageState extends State<Homepage> {
       width: 100, // Fixed width for consistent sizing
       child: ElevatedButton(
         onPressed: () => _navigateToSearch(context, types.first),
-        style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.all(12),
-          backgroundColor: Colors.white,
-          foregroundColor: Theme.of(context).primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-            side: BorderSide(
-              color: Colors.grey.shade300,
-              width: 1.5,
-            ),
-          ),
-          elevation: 0,
-        ),
+        style: Theme.of(context).elevatedButtonTheme.style,
+        
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Image.asset(
               imagePath,
               width: imageWidth,
-              color: Theme.of(context).primaryColor,
+              color: Theme.of(context).primaryColorLight,
             ),
             const SizedBox(height: 8),
             Text(

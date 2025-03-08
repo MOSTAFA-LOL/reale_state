@@ -41,6 +41,7 @@ class _SavedState extends State<Saved> {
                     ),
           ):
           
+          
               ListView.builder(
                 itemCount: finalList.length,
                 itemBuilder: (context, index) {
@@ -53,8 +54,10 @@ class _SavedState extends State<Saved> {
                           width: double.infinity,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(6),
-                              color: const Color.fromARGB(255, 250, 250, 250)),
+                              // color: const Color.fromARGB(255, 94, 88, 88)
+                              ),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Container(
                                 padding: EdgeInsets.all(15),
@@ -67,25 +70,21 @@ class _SavedState extends State<Saved> {
                                 ),
                               ),
                               SizedBox(
-                                width: 10,
+                                width: 5,
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     favoriteItem.name,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16),
+                                    style: Theme.of(context).textTheme.titleMedium,
                                   ),
                                   SizedBox(
                                     height: 3,
                                   ),
                                   Text(
                                     favoriteItem.place,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 10),
+                                    style: Theme.of(context).textTheme.titleSmall,
                                   ),
                                   SizedBox(
                                     height: 3,
@@ -93,43 +92,41 @@ class _SavedState extends State<Saved> {
                                   Text(
                                     favoriteItem.price,
                                     style: TextStyle(
+                                      color: Colors.blueAccent.shade100,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 10),
                                   ),
                                 ],
+                              ),GestureDetector(
+                                onTap: () {
+                                  finalList.removeAt(index);
+                                  setState(() {
+                                    
+                                  });
+                                    ScaffoldMessenger.of(context)
+                                      .showSnackBar(SnackBar(
+                                    content: Center(
+                                      child: Text(
+                                        
+                                        'the item was deleted',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                    backgroundColor: const Color.fromARGB(255, 236, 0, 0),
+                                    shape: StadiumBorder(),
+                                    behavior: SnackBarBehavior.floating,
+                                  ));
+                                },
+                                child: Icon(Icons.delete,color: Colors.redAccent,),
                               )
                             ],
                           ),
                         ),
                       ),
-                      Positioned(
-                          top: 40,
-                          left: 35,
-                          child: GestureDetector(
-                            onTap: () {
-                              finalList.removeAt(index);
-                              setState(() {
-                                
-                              });
-                                ScaffoldMessenger.of(context)
-                                  .showSnackBar(SnackBar(
-                                content: Center(
-                                  child: Text(
-                                    
-                                    'the item was deleted',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                                backgroundColor: const Color.fromARGB(255, 236, 0, 0),
-                                shape: StadiumBorder(),
-                                behavior: SnackBarBehavior.floating,
-                              ));
-                            },
-                            child: Icon(Icons.delete,color: Colors.red,),
-                          ))
+                      
                     ],
                   );
                 }),

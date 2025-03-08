@@ -20,66 +20,291 @@ class HouseDetalesScrean extends StatelessWidget {
   Widget build(BuildContext context) {
     // final theme = Theme.of(context);
     final provider = FavoritePrvider.of(context);
-    
 
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          _buildAppBarSection(context),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildPriceAndBookmark(provider, context),
-                  const SizedBox(height: 24),
-                  _buildPropertyFeatures(),
-                  const SizedBox(height: 24),
-                  _buildDescriptionSection(),
-                  const SizedBox(height: 24),
-                  _buildLoanCalculatorSection(context),
-                  const SizedBox(height: 32),
-                  _buildMapSection(),
-                  const SizedBox(height: 32),
-                  _buildContactAndBookingSection(context),
-                ],
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildAppBarSection (context),
+            const SizedBox(height: 24),
+            _buildPriceAndBookmark(provider, context),
+            const SizedBox(height: 20),
+            _buildHeaderSection(),
+            const SizedBox(height: 24),
+            _buildAmenitiesSection(),
+            const Divider(height: 40),
+            _buildAgentSection(),
+            const Divider(height: 40),
+            _buildOverviewSection(),
+            const Divider(height: 40),
+            _buildFacilitiesSection(),
+            const Divider(height: 40),
+            _buildGallerySection(),
+            SizedBox(height: 10,),
+            _buildMapSection(context),
+            
+            _buildContactAndBookingSection(context)
+            
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHeaderSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'APARTMENT',
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: Colors.grey.shade600,
+            letterSpacing: 1.2,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Row(
+          children: [
+            Text(
+              '4.8',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.orange.shade800,
               ),
             ),
+            const SizedBox(width: 8),
+            ...List.generate(
+                5,
+                (index) => Icon(
+                      Icons.star,
+                      color: Colors.orange.shade400,
+                      size: 18,
+                    )),
+            const SizedBox(width: 8),
+            Text(
+              '(1,275 reviews)',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey.shade600,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildAmenitiesSection() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        _buildAmenityItem(Icons.bed, '8 Beds'),
+        _buildAmenityItem(Icons.bathtub, '3 Bath'),
+        _buildAmenityItem(Icons.aspect_ratio, '2000 sqft'),
+      ],
+    );
+  }
+
+  Widget _buildAmenityItem(IconData icon, String text) {
+    return Column(
+      children: [
+        Icon(icon, size: 28, color: Colors.blue.shade800),
+        const SizedBox(height: 8),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: Colors.grey.shade700,
           ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildAgentSection() {
+    return Row(
+      children: [
+        Image.asset('assets/images/avatar.png'),
+        const SizedBox(width: 16),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Agent',
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey.shade600,
+              ),
+            ),
+            const Text(
+              'Natasya Wilodra',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'Owner',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey.shade600,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildOverviewSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Overview',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.grey.shade800,
+          ),
+        ),
+        const SizedBox(height: 12),
+        Text(
+          'Sleek, modern 2-bedroom apartment with open businesses '
+          'that read artists and educators.',
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.grey.shade600,
+            height: 1.4,
+          ),
+        ),
+      ],
+    );
+  }
+    Widget _buildFacilitiesSection() {
+    final facilities = [
+      'Car Parking', 'Swimming Pool', 'Gym & Fitness', 'Restaurant',
+      'Wi-fi & Network', 'Pet Center', 'Sport Center', 'Laundry'
+    ];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Facilities',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.grey.shade800,
+          ),
+        ),
+        const SizedBox(height: 16),
+        GridView.count(
+          crossAxisCount: 2,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          childAspectRatio: 3,
+          children: facilities.map((facility) => Row(
+            children: [
+              Icon(Icons.check_circle, color: Colors.green.shade600, size: 20),
+              const SizedBox(width: 8),
+              Text(facility, style: TextStyle(color: Colors.grey.shade600)),]
+            ),
+          ).toList(),
+        ),
+      ],
+    );
+  }
+  Widget _buildGallerySection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Location',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.grey.shade800,
+          ),
+        ),
+        const SizedBox(height: 12),
+        _buildLocationItem('Grand City St. 100, New York, United States'),
+        _buildLocationItem('488 Fcrywell Road'),
+        _buildLocationItem('621 Julian Court'),
+        _buildLocationItem('P. Gregory'),
+        _buildLocationItem('City College'),
+      ],
+    );
+  }
+
+  Widget _buildLocationItem(String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        children: [
+          Icon(Icons.location_on, color: Colors.red.shade600, size: 18),
+          const SizedBox(width: 8),
+          Text(text, style: TextStyle(color: Colors.grey.shade600)),
         ],
       ),
     );
   }
 
+
   // -------------------- App Bar Section --------------------
-  SliverAppBar _buildAppBarSection(BuildContext context) {
-    return SliverAppBar(
-      expandedHeight: 500,
-      flexibleSpace: FlexibleSpaceBar(
-        background: Stack(
-          children: [
-            ClipRRect(
-              borderRadius:
-                  const BorderRadius.vertical(bottom: Radius.circular(24)),
-              child: Image.asset(house.image, fit: BoxFit.cover),
+  Widget _buildAppBarSection(BuildContext context) {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        Hero(
+          tag: 'property-${house.id}',
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: 300),
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.3),
+                  blurRadius: 20,
+                  spreadRadius: 2,
+                )
+              ],
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(24),
+              ),
             ),
-            const DecoratedBox(
-              decoration: BoxDecoration(
-                borderRadius:
-                    BorderRadius.vertical(bottom: Radius.circular(24)),
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Colors.transparent, Colors.black54],
+            child: ClipRRect(
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(33)),
+              child: Image.asset(
+                house.image,
+                fit: BoxFit.cover,
+                width: double.infinity,
+                errorBuilder: (_, __, ___) => Container(
+                  color: Colors.grey[200],
+                  child: const Icon(Icons.home_outlined),
                 ),
               ),
             ),
-          ],
+          ),
         ),
-      ),
-      
-      
+
+        // const DecoratedBox(
+        //   decoration: BoxDecoration(
+        //     borderRadius:
+        //         BorderRadius.vertical(bottom: Radius.circular(24)),
+        //     gradient: LinearGradient(
+        //       begin: Alignment.topCenter,
+        //       end: Alignment.bottomCenter,
+        //       colors: [Colors.transparent, Colors.black54],
+        //     ),
+        //   ),
+        // ),
+      ],
     );
   }
 
@@ -103,6 +328,7 @@ class HouseDetalesScrean extends StatelessWidget {
             duration: const Duration(milliseconds: 200),
             child: Icon(
               provider.isExist(house) ? Icons.bookmark : Icons.bookmark_outline,
+              color: color,
               key: ValueKey<bool>(provider.isExist(house)),
             ),
           ),
@@ -113,90 +339,20 @@ class HouseDetalesScrean extends StatelessWidget {
   }
 
   // -------------------- Property Features --------------------
-  Widget _buildPropertyFeatures() {
-    return Wrap(
-      spacing: 20,
-      runSpacing: 12,
-      children: [
-        _buildFeatureItem(Icons.bathtub_outlined, house.baths),
-        _buildFeatureItem(Icons.bed_outlined, house.beds),
-        _buildFeatureItem(Icons.aspect_ratio, house.size),
-        _buildFeatureItem(Icons.layers_outlined, '2 Floors'),
-      ],
-    );
-  }
 
-  Widget _buildFeatureItem(IconData icon, String text) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, size: 20, color: Colors.grey.shade600),
-        const SizedBox(width: 4),
-        Text(text, style: TextStyle(color: Colors.grey.shade600)),
-      ],
-    );
-  }
+
 
   // -------------------- Description Section --------------------
-  Widget _buildDescriptionSection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildSectionTitle('Description'),
-        const SizedBox(height: 8),
-        Text(
-          description1,
-          style: TextStyle(
-            fontSize: 16,
-            height: 1.5,
-            color: Colors.grey.shade700,
-          ),
-        ),
-      ],
-    );
-  }
+
 
   // -------------------- Loan Calculator --------------------
-  Widget _buildLoanCalculatorSection(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildSectionTitle('Home Loan Calculator'),
-        const SizedBox(height: 12),
-        Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: Colors.grey.shade100,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '\$1,602/month',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.grey.shade800,
-                ),
-              ),
-              IconButton(
-                  icon: Icon(Icons.info_outline, color: color), onPressed: () {}
-                  // => _showLoanDetails(context),
-                  ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
+  
 
   // -------------------- Map Section --------------------
-  Widget _buildMapSection() {
+  Widget _buildMapSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildSectionTitle('Location'),
         const SizedBox(height: 12),
         ClipRRect(
           borderRadius: BorderRadius.circular(16),
@@ -218,7 +374,6 @@ class HouseDetalesScrean extends StatelessWidget {
   Widget _buildContactAndBookingSection(BuildContext context) {
     return Column(
       children: [
-        const Divider(thickness: 1),
         const SizedBox(height: 24),
         Row(
           children: [
@@ -247,67 +402,58 @@ class HouseDetalesScrean extends StatelessWidget {
     );
   }
 
-Widget _buildBookButton(BuildContext context) {
-  final bookProvider = context.read<BookProvider>();
-  return ElevatedButton(
-    style: ElevatedButton.styleFrom(
-      backgroundColor: color,
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(24),
+  Widget _buildBookButton(BuildContext context) {
+    final bookProvider = context.read<BookProvider>();
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: color,
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24),
+        ),
       ),
-    ),
-    onPressed: () {
-      bookProvider.bookHouse(house);
-                Navigator.pop(context);
-                _showBookingConfirmation(context);
-    },
-    child: Text('Booking now',
-      style: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-        color: Colors.white,
-      ),
-    ),
-  );
-}
-
-
-  // -------------------- Helper Methods --------------------
-  Widget _buildSectionTitle(String title) {
-    return Text(
-      title,
-      style: TextStyle(
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
-        color: Colors.grey.shade800,
+      onPressed: () {
+        bookProvider.bookHouse(house);
+        Navigator.pop(context);
+        _showBookingConfirmation(context);
+      },
+      child: Text(
+        'Booking now',
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
       ),
     );
   }
+
+  // -------------------- Helper Methods --------------------
+
   void _showBookingConfirmation(BuildContext context) {
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: const Text(
-        'Booking confirmed successfully!',
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          '!Booking confirmed successfully',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+          ),
         ),
+        backgroundColor: Colors.green.shade600,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
       ),
-      backgroundColor: Colors.green.shade600,
-      behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-      margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-    ),
-  );
-}
+    );
+  }
 
   void _toggleFavorite(FavoritePrvider provider, BuildContext context) {
     provider.toggleFavoite(house);
     _showFavoriteSnackbar(context, provider.isExist(house));
   }
-
 
   void _showFavoriteSnackbar(BuildContext context, bool isFavorite) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -316,9 +462,12 @@ Widget _buildBookButton(BuildContext context) {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(isFavorite ? Icons.favorite : Icons.favorite_border,
-                color: Colors.white),
+                color: const Color.fromARGB(255, 243, 18, 18)),
             const SizedBox(width: 8),
-            Text(isFavorite ? 'Added to Favorites' : 'Removed from Favorites'),
+            Text(
+              isFavorite ? 'Added to Favorites' : 'Removed from Favorites',
+              style: TextStyle(color: color),
+            ),
           ],
         ),
         backgroundColor: Colors.black87,

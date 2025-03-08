@@ -1,29 +1,91 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:realestate/main.dart';
+
 
 class ThemeService {
-  final lightTheme =
-      ThemeData(
-        brightness: Brightness.light,
-        scaffoldBackgroundColor:Colors.white70,
-        // cardColor: Colors.grey.shade400,
-        // scrollbarTheme: ScrollbarThemeData(),
-          hoverColor:Color(0xFF2E2E2E),
-          
-        colorScheme: ColorScheme.light(
-          surface: Colors.blueGrey,
-          primary: Colors.grey,
-          secondary: Colors.blueGrey.shade200
-        )
-      );
-  final darkTheme = 
-  ThemeData.dark().copyWith(
-        primaryColor: Colors.blue.shade300,
-        appBarTheme: AppBarTheme(
+  final lightTheme = ThemeData().copyWith(
+      colorScheme: myColorScheme,
+      appBarTheme: const AppBarTheme().copyWith(
+        backgroundColor: myColorScheme.onPrimaryContainer,
+        foregroundColor: myColorScheme.primaryContainer,
+        
+      ),
+      cardTheme: const CardTheme().copyWith(
+          color: myColorScheme.secondaryContainer,
+          margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8)),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.all(12),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+            side: BorderSide(
+              color: Colors.grey.shade300,
+              width: 1.5,
+            ),
+          ),
+          elevation: 0,
+          backgroundColor: myColorScheme.onPrimary,
+          foregroundColor: myColorScheme.onPrimaryContainer
         ),
-        dividerColor: const Color.fromARGB(255, 129, 129, 129)
-      );
+      ),
+      textTheme: ThemeData().textTheme.copyWith(
+          titleLarge: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: myColorScheme.onSecondaryContainer,
+              fontSize: 20),
+                titleMedium:TextStyle(
+              fontWeight: FontWeight.bold,
+              color: myColorScheme.onSecondaryContainer,
+              fontSize: 16,fontStyle: FontStyle.italic),
+              titleSmall:TextStyle(
+              fontWeight: FontWeight.normal,
+              color: myColorScheme.onSecondaryContainer,
+              fontSize: 13,fontStyle: FontStyle.italic)));
+
+  final darkTheme = ThemeData.dark().copyWith(
+      colorScheme: myColorScheme,
+      bottomSheetTheme: const BottomSheetThemeData()
+          .copyWith(backgroundColor: myDarkColorScheme.onPrimaryContainer),
+      appBarTheme: const AppBarTheme().copyWith(
+        backgroundColor: myDarkColorScheme.onPrimaryContainer,
+        foregroundColor: myDarkColorScheme.onPrimary,
+      ),
+      cardTheme: const CardTheme().copyWith(
+          color: myDarkColorScheme.onPrimaryContainer,
+          margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8)),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          
+          padding: const EdgeInsets.all(12),
+          backgroundColor: myDarkColorScheme.primaryContainer,
+          foregroundColor: myDarkColorScheme.onPrimaryContainer,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+            side: BorderSide(
+              color: Colors.grey.shade300,
+              width: 1.5,
+            ),
+          ),
+          elevation: 0,
+        ),
+      ),
+      textTheme: ThemeData().textTheme.copyWith(
+          titleLarge: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: myDarkColorScheme.onPrimary,
+              fontSize: 20,fontStyle: FontStyle.italic
+              ),
+              titleMedium:TextStyle(
+              fontWeight: FontWeight.bold,
+              color: myDarkColorScheme.onPrimary,
+              fontSize: 16,fontStyle: FontStyle.italic),
+              titleSmall:TextStyle(
+              fontWeight: FontWeight.normal,
+              color: myDarkColorScheme.onPrimary,
+              fontSize: 13,fontStyle: FontStyle.italic)
+              ));
 
   final _getStorage = GetStorage();
   final _darkThemeKey = "isDarkTheme";
@@ -45,3 +107,56 @@ class ThemeService {
     saveThemeData(!isSavedDarkMode());
   }
 }
+
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: 'Expenses',
+//       themeMode: ThemeMode.light,
+//       theme: ThemeData().copyWith(
+//           colorScheme: myColorScheme,
+//           appBarTheme: const AppBarTheme().copyWith(
+//             backgroundColor: myColorScheme.onPrimaryContainer,
+//             foregroundColor: myColorScheme.primaryContainer,
+//           ),
+//           cardTheme: const CardTheme().copyWith(
+//               color: myColorScheme.secondaryContainer,
+//               margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8)),
+//           elevatedButtonTheme: ElevatedButtonThemeData(
+//             style: ElevatedButton.styleFrom(
+//               backgroundColor: myColorScheme.primaryContainer,
+//             ),
+//           ),
+//           textTheme: ThemeData().textTheme.copyWith(
+//               titleLarge: TextStyle(
+//                   fontWeight: FontWeight.normal,
+//                   color: myColorScheme.onSecondaryContainer,
+//                   fontSize: 17))),
+//       darkTheme: ThemeData.dark().copyWith(
+//           colorScheme: myColorScheme,
+//           bottomSheetTheme: const BottomSheetThemeData()
+//               .copyWith(backgroundColor: myDarkColorScheme.onPrimaryContainer),
+//           appBarTheme: const AppBarTheme().copyWith(
+//             backgroundColor: myDarkColorScheme.onPrimaryContainer,
+//             foregroundColor: myDarkColorScheme.primaryContainer,
+//           ),
+//           cardTheme: const CardTheme().copyWith(
+//               color: myDarkColorScheme.secondaryContainer,
+//               margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8)),
+//           elevatedButtonTheme: ElevatedButtonThemeData(
+//             style: ElevatedButton.styleFrom(
+//               backgroundColor: myDarkColorScheme.onPrimaryContainer,
+//               foregroundColor: myDarkColorScheme.primaryContainer,
+//             ),
+//           ),
+//           textTheme: ThemeData().textTheme.copyWith(
+//               titleLarge: TextStyle(
+//                   fontWeight: FontWeight.normal,
+//                   color: myDarkColorScheme.onSecondaryContainer,
+//                   fontSize: 17))),
+

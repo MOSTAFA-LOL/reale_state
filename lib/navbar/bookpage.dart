@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:realestate/provider/book_provider.dart';
+import 'package:realestate/screans/sign_up.dart';
 
 class Bookpage extends StatelessWidget {
   const Bookpage({super.key});
@@ -19,10 +20,19 @@ class Bookpage extends StatelessWidget {
             children: [
               
               ListTile(
-                title: Text(house.name),
-                subtitle: Text(house.price),
+                title: Text(house.name,
+                style: Theme.of(context).textTheme.titleMedium,),
+                subtitle: Text(house.price,
+                style: TextStyle(
+                  color: color,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic
+                ),),
                 trailing: IconButton(
-                  icon: const Icon(Icons.cancel),
+                  icon: Icon(Icons.cancel,
+                  color: Colors.redAccent,
+                  ),
                   onPressed: () => bookProvider.cancelBooking(house),
                 ),
               ),

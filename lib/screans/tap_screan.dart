@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:realestate/navbar/profile.dart';
 import 'package:realestate/navbar/saved.dart';
 import 'package:realestate/navbar/search.dart';
-import 'package:realestate/screans/bookpage.dart';
+import 'package:realestate/navbar/bookpage.dart';
 import 'package:realestate/screans/homepage.dart';
 import 'package:realestate/screans/sign_up.dart';
 

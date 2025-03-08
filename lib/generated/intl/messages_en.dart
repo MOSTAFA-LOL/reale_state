@@ -37,11 +37,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "tO": MessageLookupByLibrary.simpleMessage("TO"),
     "text_field": MessageLookupByLibrary.simpleMessage("YOUR Email"),
     "text_field1": MessageLookupByLibrary.simpleMessage("password"),
+    "text_field12": MessageLookupByLibrary.simpleMessage(
+      "Please enter a valid email address",
+    ),
+    "text_field13": MessageLookupByLibrary.simpleMessage("access the gmail"),
+    "text_field22": MessageLookupByLibrary.simpleMessage(
+      "Please enter your password",
+    ),
+    "text_signup": MessageLookupByLibrary.simpleMessage(
+      "Sign Up to new account",
+    ),
     "title_desc": MessageLookupByLibrary.simpleMessage(
       "CONNECTING YOU TO YOUR IDEA HOME",
     ),
     "title_in": MessageLookupByLibrary.simpleMessage("welcome"),
     "title_name": MessageLookupByLibrary.simpleMessage("For RealEstate"),
+    "title_register": MessageLookupByLibrary.simpleMessage("Register"),
     "welcome": MessageLookupByLibrary.simpleMessage("welcome TO RealEstate"),
     "welcome_for": MessageLookupByLibrary.simpleMessage("Your Ideal Home"),
     "welcome_t0": MessageLookupByLibrary.simpleMessage("lets Get You Closer "),

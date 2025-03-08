@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:realestate/generated/l10n.dart';
 import 'package:realestate/screans/sign_up.dart';
 
 import 'package:realestate/screans/tap_screan.dart';
@@ -22,7 +23,9 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Register'),
+        title: Text(
+          S.of(context).title_register
+        ),
         centerTitle: true,),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -38,9 +41,10 @@ class _RegisterState extends State<Register> {
               SizedBox(height: 11,),
               // Name Field
               TextFormField(
+                strutStyle: StrutStyle(),
                 decoration: InputDecoration(
                   labelStyle: TextStyle(
-                    color: Colors.black,
+                    color: const Color.fromARGB(255, 196, 196, 196),
                   ),
                   labelText: 'Name',
                   border: OutlineInputBorder(),
@@ -61,10 +65,10 @@ class _RegisterState extends State<Register> {
               TextFormField(
                 decoration: InputDecoration(
                   labelStyle: TextStyle(
-                    color: Colors.black,
+                    color: const Color.fromARGB(255, 252, 252, 252),
                   ),
                   labelText: 'Email',
-                  border: OutlineInputBorder(),
+                  border: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.blue),
                   ),
@@ -86,7 +90,7 @@ class _RegisterState extends State<Register> {
               TextFormField(
                 decoration: InputDecoration(
                   labelStyle: TextStyle(
-                    color: Colors.black,
+                    color: const Color.fromARGB(255, 255, 255, 255),
                   ),
                   labelText: 'Phone Number',
                   border: OutlineInputBorder(),
@@ -111,7 +115,7 @@ class _RegisterState extends State<Register> {
               TextFormField(
                 decoration: InputDecoration(
                     labelStyle: TextStyle(
-                      color: Colors.black,
+                      color: const Color.fromARGB(255, 255, 255, 255),
                     ),
                     labelText: 'Password',
                     border: OutlineInputBorder(),
@@ -135,7 +139,7 @@ class _RegisterState extends State<Register> {
               TextFormField(
                 decoration: InputDecoration(
                     labelStyle: TextStyle(
-                      color: Colors.black,
+                      color: const Color.fromARGB(255, 255, 255, 255),
                     ),
                     labelText: 'Confirm Password',
                     border: OutlineInputBorder(),

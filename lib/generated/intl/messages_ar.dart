@@ -35,15 +35,26 @@ class MessageLookup extends MessageLookupByLibrary {
     "tO": MessageLookupByLibrary.simpleMessage(" الي,"),
     "text_field": MessageLookupByLibrary.simpleMessage("ادخل البريد"),
     "text_field1": MessageLookupByLibrary.simpleMessage(" ادخل الرقم السري"),
+    "text_field12": MessageLookupByLibrary.simpleMessage(
+      "من فضلك ادخل البريد الالكتروني الصحيح",
+    ),
+    "text_field13": MessageLookupByLibrary.simpleMessage(
+      "تم تاكيد البريد الالكتروني",
+    ),
+    "text_field22": MessageLookupByLibrary.simpleMessage(
+      "من فضلك ادخل الرقم السري الخاص بيك",
+    ),
+    "text_signup": MessageLookupByLibrary.simpleMessage("قم باضافه حساب جديد"),
     "title_desc": MessageLookupByLibrary.simpleMessage(
       "نوصل بينك وبين منزلك المثالي",
     ),
     "title_in": MessageLookupByLibrary.simpleMessage("هيا بنا"),
     "title_name": MessageLookupByLibrary.simpleMessage("للتسويق العقاري"),
+    "title_register": MessageLookupByLibrary.simpleMessage(" انشاء حساب "),
     "welcome": MessageLookupByLibrary.simpleMessage(
       "مرحبا بك في التسويق العقاري",
     ),
-    "welcome_for": MessageLookupByLibrary.simpleMessage("منزلك المثالي"),
+    "welcome_for": MessageLookupByLibrary.simpleMessage(" الي منزلك المثالي "),
     "welcome_t0": MessageLookupByLibrary.simpleMessage("دعنا نقربك أكثر"),
   };
 }

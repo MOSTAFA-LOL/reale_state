@@ -16,7 +16,12 @@ void main() async {
   await GetStorage.init();
   runApp(MyApp());
 }
-
+var myColorScheme = ColorScheme.fromSeed(
+  seedColor: const Color.fromARGB(255, 59, 96, 179),
+);
+var myDarkColorScheme = ColorScheme.fromSeed(
+  seedColor: const Color.fromARGB(255, 59, 96, 179),
+);
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
@@ -38,11 +43,13 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           locale: Locale('ar'),
           localizationsDelegates: [
+            
             S.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
+          
           supportedLocales: S.delegate.supportedLocales,
           initialRoute: "/TapScrean",
           routes: {"/TapScrean": (context) => TapScrean()},

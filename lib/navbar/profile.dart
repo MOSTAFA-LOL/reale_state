@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:realestate/Theme/theme.dart';
 import 'package:realestate/navbar/saved.dart';
 import 'package:realestate/provider/book_provider.dart';
-import 'package:realestate/screans/bookpage.dart';
+import 'package:realestate/navbar/bookpage.dart';
+import 'package:realestate/screans/Privacy%20Policy.dart';
+import 'package:realestate/screans/Terms%20of%20Service.dart';
+import 'package:realestate/screans/sign_up.dart';
 
 class Profile extends StatefulWidget {
   const Profile({
@@ -34,14 +37,15 @@ class _ProfileState extends State<Profile> {
               children: [
                 Text(
                   'Profile',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
                 Spacer(),
                 IconButton(
                     onPressed: () {
                       ThemeService().changeTheme();
                     },
-                    icon: Icon(moonIcon)),
+                    icon: Icon(moonIcon,
+                    color: color,)),
               ],
             ),
             Stack(
@@ -70,7 +74,7 @@ class _ProfileState extends State<Profile> {
             ),
             Text(
               'Adrian Hajdin',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             SizedBox(
               height: 12,
@@ -89,21 +93,22 @@ class _ProfileState extends State<Profile> {
                   child: Row(
                           children: [
                             Icon(
-                              Icons.calendar_month_outlined,
+                              Icons.shopping_cart,
                               // ignore: deprecated_member_use
-                              color: Colors.black.withOpacity(.7),
+                            color: color,
                             ),
                             SizedBox(
                               width: 7,
                             ),
                             Text(
                               'My Booking',
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                            style: Theme.of(context).textTheme.titleSmall,
                             ),
                             SizedBox(
-                              width: 180,
+                              width: 190,
                             ),
-                            Icon(Icons.keyboard_arrow_right)
+                            Icon(Icons.keyboard_arrow_right
+                            ,color: color,)
                           ],
                         ),
                 ),
@@ -122,22 +127,23 @@ class _ProfileState extends State<Profile> {
                   child: Row(
                     children: [
                       Icon(
-                        Icons.payment,
+                        Icons.bookmark_added,
                         // ignore: deprecated_member_use
-                        color: Colors.black.withOpacity(.7),
+                        color: color,
                       ),
                       SizedBox(
                         width: 7,
                       ),
                       Text(
                         'Saved',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.titleSmall,
                       ),
                       SizedBox(
-                        width: 218,
+                        width: 222,
                       ),
                       Icon(
                         Icons.keyboard_arrow_right,
+                        color: color,
                       ),
                     ],
                   ),
@@ -153,48 +159,67 @@ class _ProfileState extends State<Profile> {
             ),
             Column(
               children: [
-                Row(
-                  children: [
-                    Icon(
-                      Icons.person_outline,
-                      // ignore: deprecated_member_use
-                      color: Colors.black.withOpacity(.7),
-                    ),
-                    SizedBox(
-                      width: 7,
-                    ),
-                    Text(
-                      'Terms Of Service',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      width: 144,
-                    ),
-                    Icon(Icons.keyboard_arrow_right)
-                  ],
+                GestureDetector(
+                    onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Terms_of_service(),
+                        ));
+                  },
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.person_outline,
+                        // ignore: deprecated_member_use
+                        color: color,
+                      ),
+                      SizedBox(
+                        width: 7,
+                      ),
+                      Text(
+                        'Terms Of Service',
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                      SizedBox(
+                        width: 158                    ),
+                      Icon(Icons.keyboard_arrow_right
+                      ,color: color,)
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 20,
                 ),
-                Row(
-                  children: [
-                    Icon(
-                      Icons.person_outline,
-                      // ignore: deprecated_member_use
-                      color: Colors.black.withOpacity(.7),
-                    ),
-                    SizedBox(
-                      width: 7,
-                    ),
-                    Text(
-                      'Privacy Policy',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      width: 166,
-                    ),
-                    Icon(Icons.keyboard_arrow_right)
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PrivacyPolicyPage(),
+                        ));
+                  },
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.person_outline,
+                        // ignore: deprecated_member_use
+                      color: color,
+                      ),
+                      SizedBox(
+                        width: 7,
+                      ),
+                      Text(
+                        'Privacy Policy',
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                      SizedBox(
+                        width: 177,
+                      ),
+                      Icon(Icons.keyboard_arrow_right,
+                      color: color,)
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 20,
@@ -204,19 +229,20 @@ class _ProfileState extends State<Profile> {
                     Icon(
                       Icons.language,
                       // ignore: deprecated_member_use
-                      color: Colors.black.withOpacity(.7),
+                      color: color,
                     ),
                     SizedBox(
                       width: 7,
                     ),
                     Text(
                       'Language',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                     SizedBox(
-                      width: 193,
+                      width: 200,
                     ),
-                    Icon(Icons.keyboard_arrow_right)
+                    Icon(Icons.keyboard_arrow_right,
+                    color: color,)
                   ],
                 ),
                 SizedBox(
@@ -229,6 +255,7 @@ class _ProfileState extends State<Profile> {
                   children: [
                     Icon(
                       Icons.logout,
+                      
                       // ignore: deprecated_member_use
                       color: Colors.redAccent.withOpacity(.7),
                     ),
@@ -238,6 +265,7 @@ class _ProfileState extends State<Profile> {
                     Text(
                       'Logout',
                       style: TextStyle(
+                        fontStyle: FontStyle.italic,
                           color: Colors.redAccent, fontWeight: FontWeight.bold),
                     )
                   ],

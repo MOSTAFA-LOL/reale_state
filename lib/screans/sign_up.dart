@@ -17,13 +17,12 @@ Color color = Colors.blueAccent;
 
 class _SignUpState extends State<SignUp> {
   final _formKey = GlobalKey<FormState>();
-  String?  email, password;
+  String? email, password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login',
-        ),
+        title: Text(S.of(context).register),
         centerTitle: true,
       ),
       body: Padding(
@@ -40,6 +39,7 @@ class _SignUpState extends State<SignUp> {
               SizedBox(height: 15),
               Text(
                 S.of(context).login_title2,
+                style: Theme.of(context).textTheme.titleMedium
               ),
               SizedBox(
                 height: 10,
@@ -47,20 +47,22 @@ class _SignUpState extends State<SignUp> {
 
               TextFormField(
                 decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.black,),
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                  focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.blue),)
-                ),
+                    labelStyle: TextStyle(
+                      color: const Color.fromARGB(255, 241, 238, 238),
+                    ),
+                    labelText: S.of(context).text_field,
+                    border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.blue),
+                    )),
                 keyboardType: TextInputType.emailAddress,
                 onSaved: (value) => email = value,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Please enter your email';
+                    return S.of(context).login_title2;
                   }
                   if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                    return 'Please enter a valid email address';
+                    return S.of(context).text_field12;
                   }
                   return null;
                 },
@@ -72,12 +74,16 @@ class _SignUpState extends State<SignUp> {
               TextFormField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  labelStyle: TextStyle(color: color,),
+                  labelStyle: TextStyle(
+                    color: color,
+                  ),
                   focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.blue),),
+                    borderSide: BorderSide(
+                        color: const Color.fromARGB(255, 5, 139, 241)),
+                  ),
                   suffix: Icon(
                     Icons.visibility,
-                    color: const Color.fromARGB(255, 0, 0, 0),
+                    color: const Color.fromARGB(255, 141, 141, 141),
                   ),
                   hintText: S.of(context).text_field1,
                   border: OutlineInputBorder(),
@@ -85,45 +91,60 @@ class _SignUpState extends State<SignUp> {
                 onSaved: (value) => password = value,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Please enter your password';
-                  }else{
-                  return null;
+                    return S.of(context).text_field22;
+                  } else {
+                    return null;
                   }
-                  
                 },
               ),
               SizedBox(
                 height: 10,
               ),
-            ElevatedButton(
+              ElevatedButton(
+                
+                
+      
                 onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
                     _formKey.currentState!.save();
-                  
+
                     // ignore: avoid_print
                     print('$email');
                     // ignore: avoid_print
                     print('$password');
                     // Process the registration data here
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('access the gmail')),
+                      SnackBar(content: Text(S.of(context).text_field13)),
                     );
-                    Navigator.push(
-                        context, MaterialPageRoute(builder: (_) => TapScrean()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => TapScrean()));
                   }
                 },
-                child: Text('Log In',
-                style: TextStyle(color: color),),
+                child: Text(
+                  S.of(context).register,
+                  style: TextStyle(
+                    color: color
+                  ),
+                ),
               ),
               SizedBox(
                 height: 5,
               ),
               GestureDetector(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Register(),));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Register(),
+                        ));
                   },
-                  child: Center(child: Text('Sign Up to new account',
-                  style: TextStyle(color: color),)))
+                  child: Center(
+                      child: Text(
+                    S.of(context).text_signup,
+                    style: TextStyle(color: color
+                    ,fontStyle: FontStyle.italic
+                    ),
+                  )))
             ],
           ),
         ),

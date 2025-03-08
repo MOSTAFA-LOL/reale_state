@@ -22,7 +22,13 @@
     
     "login_title2" : "Please Enter YOUR Email",
     "text_field" : "YOUR Email",
-    "text_field1" : "password"
+    "text_field12" : "Please enter a valid email address",
+    "text_field22" : "Please enter your password",
+    "text_field13" : "access the gmail",
+    "text_signup" : "Sign Up to new account",
+    "text_field1" : "password",
+    "title_register" : "Register"
+  
 
 
 }

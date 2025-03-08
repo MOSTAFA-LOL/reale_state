@@ -28,23 +28,20 @@ class Search extends StatelessWidget {
         centerTitle: true,
         title: const Text(
           'Search Properties',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            letterSpacing: 0.5,
-          ),
+          
         ),
       ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16,
+          vertical: 11),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor,
+                  color: Theme.of(context).cardTheme.color,
                   borderRadius: BorderRadius.circular(30),
                   boxShadow: [
                     BoxShadow(
@@ -72,10 +69,7 @@ class Search extends StatelessWidget {
                       onPressed: () {},
                     ),
                     hintText: 'Search properties...',
-                    hintStyle: TextStyle(
-                      color: Theme.of(context).hintColor,
-                      fontSize: 15,
-                    ),
+                    hintStyle:  Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
               ),
@@ -143,7 +137,7 @@ class Search extends StatelessWidget {
                   children: [
                     Text(
                       house.name,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: Theme.of(context).textTheme.titleMedium,
                     ),
                     SizedBox(
                       height: 10,
@@ -157,7 +151,7 @@ class Search extends StatelessWidget {
                     ),
                 Text(
                   house.place,
-                  style: TextStyle(fontWeight: FontWeight.w300),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
                 SizedBox(
                   height: 10,

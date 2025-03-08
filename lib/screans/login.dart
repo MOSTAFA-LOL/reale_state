@@ -24,9 +24,10 @@ class _LoginState extends State<Login> {
                 padding: const EdgeInsets.symmetric(horizontal: 46),
                 child: Image.asset('assets/images/onboarding.png'),
               ),
+              SizedBox(height: 5,),
               Text(
                 S.of(context).welcome,
-                style: TextStyle(fontWeight: FontWeight.w200),
+                style: Theme.of(context).textTheme.titleLarge
               ),
               SizedBox(
                 height: 5,
@@ -38,7 +39,7 @@ class _LoginState extends State<Login> {
               Center(
                 child: Text(
                   S.of(context).welcome_t0,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                  style: Theme.of(context).textTheme.titleLarge
                 ),
               ),
               Center(
@@ -47,18 +48,18 @@ class _LoginState extends State<Login> {
                     // Start with the default style from the current context
                     // style: DefaultTextStyle.of(context).style,
                     children: <TextSpan>[
-                      TextSpan(
-                          text: S.of(context).tO,
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold)),
+                      // TextSpan(
+                      //     text: S.of(context).tO,
+                      //     style: TextStyle(
+                      //         color: Color.fromARGB(255, 0, 0, 0),
+                      //         fontSize: 30,
+                      //         fontWeight: FontWeight.bold)),
                       TextSpan(
                         text: S.of(context).welcome_for,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.blueAccent,
-                            fontSize: 30),
+                            fontSize: 20),
                       ),
                     ],
                   ),
@@ -66,7 +67,7 @@ class _LoginState extends State<Login> {
               ),
               Text(
                 S.of(context).login_title,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: Theme.of(context).textTheme.titleMedium
               )
             ],
           ),
@@ -85,8 +86,7 @@ class _LoginState extends State<Login> {
                 child: Center(
                   child: Text(
                     S.of(context).register,
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.titleMedium
                   ),
                 ),
               )),
@@ -104,12 +104,12 @@ class _LoginState extends State<Login> {
                   children: <TextSpan>[
                     TextSpan(
                         text: S.of(context).make_sure,
-                        style: TextStyle(
-                          color: Colors.black38,
-                        )),
+                        style: Theme.of(context).textTheme.titleMedium),
                     TextSpan(
                       text: S.of(context).ontap,
                       style: TextStyle(
+                        fontSize: 15,
+                        fontStyle: FontStyle.italic,
                         fontWeight: FontWeight.bold,
                         color: Colors.blueAccent,
                       ),
