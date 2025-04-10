@@ -21,7 +21,7 @@ class _SavedState extends State<Saved> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Favorite',
+          'المحفوظات',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
@@ -31,7 +31,7 @@ class _SavedState extends State<Saved> {
             child: Padding(
                       padding: EdgeInsets.all(20),
                       child: Text(
-                        'No property added yet',
+                        'لا توجد عقارات محفوظه حتي الان',
                         style: TextStyle(
                           fontSize: 18,
                           color: Colors.grey,
@@ -108,7 +108,7 @@ class _SavedState extends State<Saved> {
                                     content: Center(
                                       child: Text(
                                         
-                                        'the item was deleted',
+                                        'تم حذف العقار من المفضله',
                                         style: TextStyle(
                                             fontSize: 18,
                                             color: Colors.white,

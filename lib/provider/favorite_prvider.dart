@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:realestate/data.dart/data.dart';
+import 'package:realestate/data/data.dart';
 // import 'package:provider/provider.dart';
 
 

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:realestate/generated/l10n.dart';
-import 'package:realestate/screans/register.dart';
+import 'package:realestate/screans/auth.dart';
 // import 'package:realestate/screans/homepage.dart';
-import 'package:realestate/screans/sign_up.dart';
+
 // import 'package:realestate/screans/tap_screan.dart';
 
 class Login extends StatefulWidget {
@@ -26,7 +25,7 @@ class _LoginState extends State<Login> {
               ),
               SizedBox(height: 5,),
               Text(
-                S.of(context).welcome,
+                "مرحبًا بك في العقارات",
                 style: Theme.of(context).textTheme.titleLarge
               ),
               SizedBox(
@@ -38,7 +37,7 @@ class _LoginState extends State<Login> {
             children: [
               Center(
                 child: Text(
-                  S.of(context).welcome_t0,
+                  "لنبدأ البحث عن",
                   style: Theme.of(context).textTheme.titleLarge
                 ),
               ),
@@ -55,7 +54,7 @@ class _LoginState extends State<Login> {
                       //         fontSize: 30,
                       //         fontWeight: FontWeight.bold)),
                       TextSpan(
-                        text: S.of(context).welcome_for,
+                        text: "منزلك المثالي",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.blueAccent,
@@ -66,7 +65,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Text(
-                S.of(context).login_title,
+                "سجل الدخول باستخدام البريد الالكتروني",
                 style: Theme.of(context).textTheme.titleMedium
               )
             ],
@@ -76,7 +75,7 @@ class _LoginState extends State<Login> {
           ),
           GestureDetector(
               onTap: (() => Navigator.push(
-                  context, MaterialPageRoute(builder: (_) => SignUp()))),
+                  context, MaterialPageRoute(builder: (_) => AuthScrean()))),
               child: Container(
                 height: 50,
                 width: 130,
@@ -85,7 +84,7 @@ class _LoginState extends State<Login> {
                     color: Colors.blueAccent),
                 child: Center(
                   child: Text(
-                    S.of(context).register,
+                    'سجل الان',
                     style: Theme.of(context).textTheme.titleMedium
                   ),
                 ),
@@ -93,32 +92,32 @@ class _LoginState extends State<Login> {
           SizedBox(
             height: 7,
           ),
-          GestureDetector(
-            onTap: (() => Navigator.push(
-                context, MaterialPageRoute(builder: (_) => Register()))),
-            child: Center(
-              child: RichText(
-                text: TextSpan(
-                  // Start with the default style from the current context
-                  // style: DefaultTextStyle.of(context).style,
-                  children: <TextSpan>[
-                    TextSpan(
-                        text: S.of(context).make_sure,
-                        style: Theme.of(context).textTheme.titleMedium),
-                    TextSpan(
-                      text: S.of(context).ontap,
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blueAccent,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          )
+          // GestureDetector(
+          //   onTap: (() => Navigator.push(
+          //       context, MaterialPageRoute(builder: (_) => Register()))),
+          //   child: Center(
+          //     child: RichText(
+          //       text: TextSpan(
+          //         // Start with the default style from the current context
+          //         // style: DefaultTextStyle.of(context).style,
+          //         children: <TextSpan>[
+          //           TextSpan(
+          //               text: "هل لديك حساب؟",
+          //               style: Theme.of(context).textTheme.titleMedium),
+          //           TextSpan(
+          //             text: " حساب جديد",
+          //             style: TextStyle(
+          //               fontSize: 15,
+          //               fontStyle: FontStyle.italic,
+          //               fontWeight: FontWeight.bold,
+          //               color: Colors.blueAccent,
+          //             ),
+          //           ),
+          //         ],
+          //       ),
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );

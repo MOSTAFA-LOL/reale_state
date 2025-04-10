@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:realestate/screans/sign_up.dart';
 
 // ignore: camel_case_types
 class Terms_of_service extends StatelessWidget {
@@ -7,215 +6,191 @@ class Terms_of_service extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Terms of Service',
-            style: TextStyle(fontWeight: FontWeight.bold),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+        'شروط الخدمة',
           ),
-          centerTitle: true,
-        ),
-        body: SingleChildScrollView(
-          padding: EdgeInsets.all(16),
+        centerTitle: true,
+      ),
+      body: Directionality(
+        textDirection: TextDirection.rtl,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Our Terms of Services:',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.blueGrey[800],
-                ),
+                  'شروط الخدمة الخاصة بنا:',
+                  style: Theme.of(context).textTheme.titleLarge,
               ),
-              SizedBox(height: 24),
-              _buildSectionTitle('1. Acceptance of Terms'),
-              _buildSectionContent(
-                'By using this app, you agree to comply with the terms and conditions outlined here. '
-                'If you disagree, please refrain from using the app.',
+              const SectionHeader(
+                title: '1. قبول الشروط',
+                content:
+                    'باستخدامك لهذا التطبيق، فإنك توافق على الالتزام بالشروط والأحكام المذكورة هنا.إذا كنت لا توافق، يرجى الامتناع عن استخدام التطبيق. ',
+                    
               ),
-              SizedBox(height: 15),
-              const Divider(height: 40),
-              _buildSectionTitle('2. Service Description'),
-              _buildSectionContent(
-                'The app facilitates real estate transactions (buying/selling) and booking consultations '
-                'with certified agents.',
+              const SectionHeader(
+                title: '2. وصف الخدمة',
+                content: 'يسهل التطبيق معاملات العقارات (البيع/الشراء) وحجز الاستشارات مع وكلاء معتمدين.',
+                bullets: [
+                  'نقدم معلومات مفصلة عن العقارات (الصور، الأسعار، المواقع، إلخ)،على الرغم من أن البيانات قد تختلف قليلاً عن الواقع.',
+                  
+                  
+                ],
               ),
-              SizedBox(height: 8),
-              _buildBulletPoint(
-                'We provide detailed property information (images, prices, locations, etc.), '
-                'though data may slightly differ from reality.',
+              const SectionHeader(
+                title: '3. المسؤوليات القانونية',
+                bullets: [
+                  'التطبيق غير مسؤول عن أي أخطاء في تفاصيل العقارات المقدمة من المعلنين أو الوكلاء.',
+                  
+                ],
               ),
-              
-              const Divider(height: 40),
-              _buildSectionTitle('3. Legal Responsibilities'),
-              _buildSectionContent(
-                'The app is not liable for inaccuracies in property details provided by advertisers or agents.',
+              const SectionHeader(
+                title: '4. الإلغاءات والاسترداد',
+                content: 'نشارك البيانات مع:',
+                bullets: [
+                  'يجب أن تتم مطابقة طلبات الإلغاء أو الاسترداد مع السياسة المذكورة أثناء الدفع.',
+                  
+                ],
+                note: 'نحن لا نبيع بياناتك للمعلنين.',
               ),
-              SizedBox(height: 8),
-              _buildBulletPoint(
-                'Illegal activities or posting misleading content on the app are strictly prohibited.',
+              const SectionHeader(
+                title: '5. التحديثات والدعم الفني',
+                bullets: [
+                  'يجب أن تتم مطابقة طلبات الإلغاء أو الاسترداد مع السياسة المذكورة أثناء الدفع.',
+                  'لن يتم إصدار استرداد للأموال في حالة انتهاك هذه الشروط.',
+                  
+                ],
               ),
-              
-              const Divider(height: 40),
-              _buildSectionTitle('4. Cancellations and Refunds'),
-              _buildSectionContent(
-                  'You are responsible for maintaining the confidentiality of your account credentials.'),
-              SizedBox(height: 8),
-              _buildBulletPoint(
-                  'We collect personal data to improve services and will not share it with third parties without your consent (unless required by law).'),
-              
-              const Divider(height: 40),
-              _buildSectionTitle('5. Updates and Technical Support'),
-              _buildSectionContent(
-                  'Cancellations or refund requests must align with the policy stated during payment.'),
-              SizedBox(height: 8),
-              _buildBulletPoint(
-                  'Refunds will not be issued for violations of these terms..'),
-              const Divider(height: 40),
-              _buildSectionTitle('6. Payments and Commissions'),
-              _buildSectionContent(
-                  'Payments are subject to the policies of third-party financial providers (e.g., credit cards, e-wallets).'),
-              SizedBox(height: 8),
-              _buildBulletPoint(
-                  'A predefined commission may apply to completed transactions, and you will be notified in advance.'),
-              const Divider(height: 40),
-              _buildSectionTitle('7. Updates and Technical Support'),
-              _buildSectionContent(
-                  'Payments are subject to the policies of third-party financial providers (e.g., credit cards, e-wallets).'),
-              SizedBox(height: 8),
-              _buildBulletPoint(
-                  'For support, contact us at: support@realestateapp.com.'),
-              const Divider(height: 40),
-              _buildSectionTitle('8. Modification of Terms'),
-              _buildSectionContent(
-                  'We reserve the right to update these terms at any time. Users will be notified via the app or email.'),
-              SizedBox(height: 20),
+              const SectionHeader(
+                title: '6. حقوقك',
+                bullets: [
+                  'الوصول/تعديل بياناتك',
+                  'طلب الحذف',
+                  'الانسحاب من التسويق',
+                ],
+              ),
+              const SectionHeader(
+                title: '7. الكوكيز والتتبع',
+                content:
+                    'نستخدم ملفات تعريف الارتباط وأدوات التحليل. يمكنك تعطيل هذه الميزات من إعدادات جهازك.',
+              ),
+              const SectionHeader(
+                title: '8. خصوصية الأطفال',
+                content:
+                    'غير مخصص للمستخدمين تحت 18 عامًا. نحن لا نجمع بيانات القصّر عن علم.',
+              ),
+              const SectionHeader(
+                title: '9. تحديثات السياسة',
+                content: 'سيتم إعلامك بالتغييرات عبر تنبيهات داخل التطبيق أو البريد الإلكتروني.',
+              ),
+              const SectionHeader(
+                title: '10. اتصل بنا',
+                content: 'للأسئلة أو الطلبات: privacy@realestateapp.com',
+              ),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(255, 129, 128, 128),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 16, horizontal: 50),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                      ),
+                      backgroundColor: Colors.grey[300],
                     ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text(
-                      'Delince',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text('رفض',
+                        style: TextStyle(color: Colors.black)),
                   ),
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: color,
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 16, horizontal: 50),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context).primaryColor,
                       ),
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                      _showBookingConfirmation(context);
-                    },
-                    child: Text(
-                      'Agree',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('موافق',
+                          style: TextStyle(color: Colors.white))),
                 ],
-              )
+              ),
+              const SizedBox(height: 16),
             ],
           ),
         ),
       ),
     );
   }
+}
 
-  void _showBookingConfirmation(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Acceptance of Terms Successfully ',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.white,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        backgroundColor: Colors.green.shade600,
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-        margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-      ),
-    );
-  }
+class SectionHeader extends StatelessWidget {
+  final String title;
+  final String? content;
+  final List<String>? bullets;
+  final String? note;
 
-  // Helper widget for section titles
-  Widget _buildSectionTitle(String text) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 8),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-          color: Colors.indigo[700],
-        ),
-      ),
-    );
-  }
+  const SectionHeader({
+    super.key,
+    required this.title,
+    this.content,
+    this.bullets,
+    this.note,
+  });
 
-// Helper widget for section content
-  Widget _buildSectionContent(String text) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontSize: 14,
-        height: 1.4,
-        color: Colors.grey[600],
-      ),
-      textAlign: TextAlign.start,
-    );
-  }
-
-// Helper widget for bullet points
-  Widget _buildBulletPoint(String text) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('• ', style: TextStyle(fontSize: 14)),
-          Expanded(
-            child: Text(
-              text,
-              style: TextStyle(
-                fontSize: 14,
-                height: 1.4,
-                color: Colors.grey[600],
-              ),
-              textAlign: TextAlign.start,
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(title,
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue[800],
+                )),
+        const SizedBox(height: 8),
+        if (content != null)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Text(content!, 
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  height: 1.5,
+                  fontSize: 16
+                ),
+                textAlign: TextAlign.justify,
             ),
           ),
-        ],
-      ),
+        if (bullets != null)
+          ...bullets!.map((bullet) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 2.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Icon(Icons.brightness_1, 
+                          size: 8, 
+                          color: Colors.blue[800]),
+                    ),
+                    Expanded(
+                        child: Text(bullet,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(fontSize: 16),
+                            textAlign: TextAlign.justify)),
+                  ],
+                ),
+              )),
+        if (note != null)
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Text(note!,
+                style: TextStyle(
+                  color: Colors.green[800],
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16
+                )),
+          ),
+        const Divider(height: 40),
+      ],
     );
   }
 }

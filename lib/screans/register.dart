@@ -1,7 +1,8 @@
 // ignore_for_file: avoid_print
 
+
 import 'package:flutter/material.dart';
-import 'package:realestate/generated/l10n.dart';
+
 import 'package:realestate/screans/sign_up.dart';
 
 import 'package:realestate/screans/tap_screan.dart';
@@ -24,7 +25,7 @@ class _RegisterState extends State<Register> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          S.of(context).title_register
+          'انشاء حساب جديد '
         ),
         centerTitle: true,),
       body: Padding(
@@ -32,7 +33,9 @@ class _RegisterState extends State<Register> {
         child: Form(
           key: _formKey,
           child: ListView(
+            
             children: [
+              
               Image.asset(
                 'assets/images/R.png', // Replace with your image path
 
@@ -41,12 +44,12 @@ class _RegisterState extends State<Register> {
               SizedBox(height: 11,),
               // Name Field
               TextFormField(
+                cursorColor: color,
+                style:Theme.of(context).textTheme.titleMedium,
                 strutStyle: StrutStyle(),
                 decoration: InputDecoration(
-                  labelStyle: TextStyle(
-                    color: const Color.fromARGB(255, 196, 196, 196),
-                  ),
-                  labelText: 'Name',
+                  labelStyle: Theme.of(context).textTheme.titleMedium,
+                  labelText: 'الاسم ',
                   border: OutlineInputBorder(),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.blue),
@@ -55,7 +58,7 @@ class _RegisterState extends State<Register> {
                 onSaved: (value) => name = value,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Please enter your name';
+                    return 'الرجاء إدخال الاسم';
                   }
                   return null;
                 },
@@ -63,11 +66,10 @@ class _RegisterState extends State<Register> {
               SizedBox(height: 16),
               // Email Field
               TextFormField(
+                style:Theme.of(context).textTheme.titleSmall,
                 decoration: InputDecoration(
-                  labelStyle: TextStyle(
-                    color: const Color.fromARGB(255, 252, 252, 252),
-                  ),
-                  labelText: 'Email',
+                  labelStyle: Theme.of(context).textTheme.titleMedium,
+                  labelText: 'البريد الالكتروني',
                   border: OutlineInputBorder(borderSide: BorderSide(color: Colors.blue)),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.blue),
@@ -77,10 +79,10 @@ class _RegisterState extends State<Register> {
                 onSaved: (value) => email = value,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Please enter your email';
+                    return "الرجاء إدخال البريد الإلكتروني";
                   }
                   if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                    return 'Please enter a valid email address';
+                    return 'الرجاء ادخال بريدك الالكتروني مره اخري ';
                   }
                   return null;
                 },
@@ -88,11 +90,10 @@ class _RegisterState extends State<Register> {
               SizedBox(height: 16),
               // Phone Number Field
               TextFormField(
+                style:Theme.of(context).textTheme.titleSmall,
                 decoration: InputDecoration(
-                  labelStyle: TextStyle(
-                    color: const Color.fromARGB(255, 255, 255, 255),
-                  ),
-                  labelText: 'Phone Number',
+                  labelStyle:Theme.of(context).textTheme.titleMedium,
+                  labelText: 'رقم الهاتف',
                   border: OutlineInputBorder(),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.blue),
@@ -102,10 +103,10 @@ class _RegisterState extends State<Register> {
                 onSaved: (value) => phone = value,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Please enter your phone number';
+                    return 'الرجاء إدخال رقم الهاتف';
                   }
                   if (value.length >= 12) {
-                    return 'Password must be at 12 number';
+                    return 'لابد ان يكون الرقم 12 ';
                   }
                   return null;
                 },
@@ -113,11 +114,10 @@ class _RegisterState extends State<Register> {
               SizedBox(height: 16),
               // Password Field
               TextFormField(
+                style:Theme.of(context).textTheme.titleSmall,
                 decoration: InputDecoration(
-                    labelStyle: TextStyle(
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    labelText: 'Password',
+                    labelStyle: Theme.of(context).textTheme.titleMedium,
+                    labelText: 'كلمه المرور',
                     border: OutlineInputBorder(),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blue),
@@ -126,10 +126,10 @@ class _RegisterState extends State<Register> {
                 onSaved: (value) => password = value,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter a password';
+                    return 'الرجاء إدخال كلمة المرور"';
                   }
                   if (value.length < 6) {
-                    return 'Password must be at least 6 characters';
+                    return 'كلمه المرور اقل شي 6 حروف';
                   }
                   return null;
                 },
@@ -138,10 +138,8 @@ class _RegisterState extends State<Register> {
               // Confirm Password Field
               TextFormField(
                 decoration: InputDecoration(
-                    labelStyle: TextStyle(
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                    ),
-                    labelText: 'Confirm Password',
+                    labelStyle: Theme.of(context).textTheme.titleMedium,
+                    labelText: 'تأكيد كلمة المرور"',
                     border: OutlineInputBorder(),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blue),
@@ -150,13 +148,13 @@ class _RegisterState extends State<Register> {
                 onSaved: (value) => confirmPassword = value,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please confirm your password';
+                    return 'الرجاء تأكيد كلمة المرور';
                   }
                   // The password value will be available after onSaved has run
                   if (_formKey.currentState != null) {
                     _formKey.currentState!.save();
                     if (password != null && value != password) {
-                      return 'Passwords do not match';
+                      return 'كلمه المرور ليست متطابقه';
                     }
                   }
                   return null;
@@ -174,13 +172,13 @@ class _RegisterState extends State<Register> {
                     print('$password');
                     // Process the registration data here
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('created gmail')),
+                      SnackBar(content: Text('تم تاكيد الحساب ')),
                     );
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => TapScrean()));
                   }
                 },
-                child: Text('Register',
+                child: Text('انشاء حسابك الخاص بك',
                 style: TextStyle(color: color),),
               ),
             ],

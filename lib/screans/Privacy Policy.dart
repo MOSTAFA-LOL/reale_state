@@ -7,132 +7,113 @@ class PrivacyPolicyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Privacy Policy'),
+        title: const Text('سياسة الخصوصية'),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SectionHeader(
-              title: '1. Introduction',
-              content:
-                  'Welcome to [AQAREK], a mobile application for buying, selling, and renting real estate. By using the app, you consent to the practices described below.',
-            ),
-            const SectionHeader(
-              title: '2. Data We Collect',
-              content: 'We collect the following types of information:',
-              bullets: [
-                'Personal Information (Name, email, phone number, address)',
-                'Government-issued ID (for property transactions)',
-                'Usage Data (search history, device information)',
-                'Location Data (GPS or approximate location)',
-                'Financial Information (processed via secure gateways)',
-              ],
-            ),
-            const SectionHeader(
-              title: '3. How We Use Your Data',
-              bullets: [
-                'Personalize your experience',
-                'Facilitate transactions and bookings',
-                'Improve app performance',
-                'Send updates and legal notices',
-              ],
-            ),
-            const SectionHeader(
-              title: '4. Data Sharing',
-              content: 'We share data with:',
-              bullets: [
-                'Payment gateways (Stripe, PayPal)',
-                'Cloud services (Firebase)',
-                'Analytics tools (Google Analytics)',
-                'Legal authorities when required',
-              ],
-              note: 'We do NOT sell your data to advertisers.',
-            ),
-            const SectionHeader(
-              title: '5. Data Security',
-              bullets: [
-                'SSL/TLS encryption',
-                'Restricted database access',
-                'Regular security audits',
-              ],
-            ),
-            const SectionHeader(
-              title: '6. Your Rights',
-              bullets: [
-                'Access/Edit your data',
-                'Request deletion',
-                'Opt-out of marketing',
-              ],
-            ),
-            const SectionHeader(
-              title: '7. Cookies & Tracking',
-              content:
-                  'We use cookies and analytics tools. You can disable these in your device settings.',
-            ),
-            const SectionHeader(
-              title: '8. Children’s Privacy',
-              content:
-                  'Not intended for users under 18. We do not knowingly collect minor data.',
-            ),
-            const SectionHeader(
-              title: '9. Policy Updates',
-              content: 'Changes will be notified via in-app alerts or email.',
-            ),
-            const SectionHeader(
-              title: '10. Contact Us',
-              content: 'For questions or requests: privacy@realestateapp.com',
-            ),
-            const SizedBox(height: 24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey[300],
-                  ),
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text('Decline',
-                      style: TextStyle(color: Colors.black)),
-                ),
-                ElevatedButton(
+      body: Directionality(
+        textDirection: TextDirection.rtl,
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SectionHeader(
+                title: '1. المقدمة',
+                content:
+                    'مرحبًا بكم في [عقارك]، تطبيق جوال لشراء وبيع العقارات. باستخدامك للتطبيق، فإنك توافق على الممارسات الموضحة أدناه.',
+              ),
+              const SectionHeader(
+                title: '2. البيانات التي نجمعها',
+                content: 'نقوم بجمع الأنواع التالية من المعلومات:',
+                bullets: [
+                  'معلومات شخصية (الاسم، البريد الإلكتروني، رقم الهاتف، العنوان)',
+                  'هوية حكومية (للمعاملات العقارية)',
+                  'بيانات الاستخدام (سجل البحث، معلومات الجهاز)',
+                  'بيانات الموقع (GPS أو الموقع التقريبي)',
+                  'معلومات مالية (معالجة عبر بوابات آمنة)',
+                ],
+              ),
+              const SectionHeader(
+                title: '3. كيفية استخدام بياناتك',
+                bullets: [
+                  'تخصيص تجربتك',
+                  'تسهيل المعاملات والحجوزات',
+                  'تحسين أداء التطبيق',
+                  'إرسال التحديثات والإشعارات القانونية',
+                ],
+              ),
+              const SectionHeader(
+                title: '4. مشاركة البيانات',
+                content: 'نشارك البيانات مع:',
+                bullets: [
+                  'بوابات الدفع (Stripe، PayPal)',
+                  'خدمات السحابة (Firebase)',
+                  'أدوات التحليل (Google Analytics)',
+                  'السلطات القانونية عند الاقتضاء',
+                ],
+                note: 'نحن لا نبيع بياناتك للمعلنين.',
+              ),
+              const SectionHeader(
+                title: '5. أمان البيانات',
+                bullets: [
+                  'تشفير SSL/TLS',
+                  'وصول مقيد إلى قواعد البيانات',
+                  'مراجعات أمنية دورية',
+                ],
+              ),
+              const SectionHeader(
+                title: '6. حقوقك',
+                bullets: [
+                  'الوصول/تعديل بياناتك',
+                  'طلب الحذف',
+                  'الانسحاب من التسويق',
+                ],
+              ),
+              const SectionHeader(
+                title: '7. الكوكيز والتتبع',
+                content:
+                    'نستخدم ملفات تعريف الارتباط وأدوات التحليل. يمكنك تعطيل هذه الميزات من إعدادات جهازك.',
+              ),
+              const SectionHeader(
+                title: '8. خصوصية الأطفال',
+                content:
+                    'غير مخصص للمستخدمين تحت 18 عامًا. نحن لا نجمع بيانات القصّر عن علم.',
+              ),
+              const SectionHeader(
+                title: '9. تحديثات السياسة',
+                content: 'سيتم إعلامك بالتغييرات عبر تنبيهات داخل التطبيق أو البريد الإلكتروني.',
+              ),
+              const SectionHeader(
+                title: '10. اتصل بنا',
+                content: 'للأسئلة أو الطلبات: privacy@realestateapp.com',
+              ),
+              const SizedBox(height: 24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(context).primaryColor,
+                      backgroundColor: Colors.grey[300],
                     ),
-                    onPressed: () {
-                      // Handle agreement
-                      _showBookingConfirmation(context);
-                      Navigator.pop(context);
-                    },
-                    child: const Text('Agree',
-                        style: TextStyle(color: Colors.white))),
-              ],
-            ),
-            const SizedBox(height: 16),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _showBookingConfirmation(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Acceptance of Terms Successfully ',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.white,
-            fontWeight: FontWeight.w600,
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text('رفض',
+                        style: TextStyle(color: Colors.black)),
+                  ),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context).primaryColor,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('موافق',
+                          style: TextStyle(color: Colors.white))),
+                ],
+              ),
+              const SizedBox(height: 16),
+            ],
           ),
         ),
-        backgroundColor: Colors.green.shade600,
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-        margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
       ),
     );
   }
@@ -166,8 +147,13 @@ class SectionHeader extends StatelessWidget {
         if (content != null)
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
-            child:
-                Text(content!, style: Theme.of(context).textTheme.titleMedium),
+            child: Text(content!, 
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  height: 1.5,
+                  fontSize: 16
+                ),
+                textAlign: TextAlign.justify,
+            ),
           ),
         if (bullets != null)
           ...bullets!.map((bullet) => Padding(
@@ -175,10 +161,19 @@ class SectionHeader extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('• ', style: TextStyle(fontSize: 16)),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Icon(Icons.brightness_1, 
+                          size: 8, 
+                          color: Colors.blue[800]),
+                    ),
                     Expanded(
                         child: Text(bullet,
-                            style: Theme.of(context).textTheme.titleMedium)),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(fontSize: 16),
+                            textAlign: TextAlign.justify)),
                   ],
                 ),
               )),
@@ -189,6 +184,7 @@ class SectionHeader extends StatelessWidget {
                 style: TextStyle(
                   color: Colors.green[800],
                   fontWeight: FontWeight.bold,
+                  fontSize: 16
                 )),
           ),
         const Divider(height: 40),

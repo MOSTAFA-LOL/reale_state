@@ -38,27 +38,27 @@ class _TapScreanState extends State<TapScrean> {
     BottomNavigationBarItem(
       icon: Icon(Icons.home_outlined),
       activeIcon: Icon(Icons.home),
-      label: 'Home',
+      label: 'الرئيسية ',
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.search_outlined),
       activeIcon: Icon(Icons.search),
-      label: 'Search',
+      label: 'البحث',
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.bookmark_outline),
       activeIcon: Icon(Icons.bookmark),
-      label: 'Saved',
+      label: 'المحفظات',
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.add_shopping_cart_sharp),
       activeIcon: Icon(Icons.shopping_cart),
-      label: 'orders',
+      label: 'حجوزاتي',
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.person_outline),
       activeIcon: Icon(Icons.person),
-      label: 'Profile',
+      label: 'الملف الشخصي ',
     ),
   ],
 ),

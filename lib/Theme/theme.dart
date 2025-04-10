@@ -106,57 +106,9 @@ class ThemeService {
     Get.changeThemeMode(isSavedDarkMode() ? ThemeMode.light : ThemeMode.dark);
     saveThemeData(!isSavedDarkMode());
   }
+  
 }
 
 
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: 'Expenses',
-//       themeMode: ThemeMode.light,
-//       theme: ThemeData().copyWith(
-//           colorScheme: myColorScheme,
-//           appBarTheme: const AppBarTheme().copyWith(
-//             backgroundColor: myColorScheme.onPrimaryContainer,
-//             foregroundColor: myColorScheme.primaryContainer,
-//           ),
-//           cardTheme: const CardTheme().copyWith(
-//               color: myColorScheme.secondaryContainer,
-//               margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8)),
-//           elevatedButtonTheme: ElevatedButtonThemeData(
-//             style: ElevatedButton.styleFrom(
-//               backgroundColor: myColorScheme.primaryContainer,
-//             ),
-//           ),
-//           textTheme: ThemeData().textTheme.copyWith(
-//               titleLarge: TextStyle(
-//                   fontWeight: FontWeight.normal,
-//                   color: myColorScheme.onSecondaryContainer,
-//                   fontSize: 17))),
-//       darkTheme: ThemeData.dark().copyWith(
-//           colorScheme: myColorScheme,
-//           bottomSheetTheme: const BottomSheetThemeData()
-//               .copyWith(backgroundColor: myDarkColorScheme.onPrimaryContainer),
-//           appBarTheme: const AppBarTheme().copyWith(
-//             backgroundColor: myDarkColorScheme.onPrimaryContainer,
-//             foregroundColor: myDarkColorScheme.primaryContainer,
-//           ),
-//           cardTheme: const CardTheme().copyWith(
-//               color: myDarkColorScheme.secondaryContainer,
-//               margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 8)),
-//           elevatedButtonTheme: ElevatedButtonThemeData(
-//             style: ElevatedButton.styleFrom(
-//               backgroundColor: myDarkColorScheme.onPrimaryContainer,
-//               foregroundColor: myDarkColorScheme.primaryContainer,
-//             ),
-//           ),
-//           textTheme: ThemeData().textTheme.copyWith(
-//               titleLarge: TextStyle(
-//                   fontWeight: FontWeight.normal,
-//                   color: myDarkColorScheme.onSecondaryContainer,
-//                   fontSize: 17))),
 

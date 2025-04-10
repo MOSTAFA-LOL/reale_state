@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_svg/flutter_svg.dart';
-import 'package:realestate/generated/l10n.dart';
+
 // import 'package:realestate/screans/homepage.dart';
 import 'package:realestate/screans/register.dart';
 // import 'package:realestate/screans/homepage.dart';
@@ -22,7 +22,7 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).register),
+        title: Text('تسجيل الدخول '),
         centerTitle: true,
       ),
       body: Padding(
@@ -37,20 +37,17 @@ class _SignUpState extends State<SignUp> {
                 height: 200, // Adjust the height as needed
               ),
               SizedBox(height: 15),
-              Text(
-                S.of(context).login_title2,
-                style: Theme.of(context).textTheme.titleMedium
-              ),
+              Text('ادخل البريد الالكتروني ',
+                  style: Theme.of(context).textTheme.titleMedium),
               SizedBox(
                 height: 10,
               ),
 
               TextFormField(
+                style: Theme.of(context).textTheme.titleSmall,
                 decoration: InputDecoration(
-                    labelStyle: TextStyle(
-                      color: const Color.fromARGB(255, 241, 238, 238),
-                    ),
-                    labelText: S.of(context).text_field,
+                    labelStyle: Theme.of(context).textTheme.titleMedium,
+                    labelText: "البريدالالكتروني",
                     border: OutlineInputBorder(),
                     focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.blue),
@@ -58,11 +55,10 @@ class _SignUpState extends State<SignUp> {
                 keyboardType: TextInputType.emailAddress,
                 onSaved: (value) => email = value,
                 validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return S.of(context).login_title2;
-                  }
-                  if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-                    return S.of(context).text_field12;
+                  if (value == null ||
+                      value.trim().isEmpty ||
+                      value.contains('a')) {
+                    return "الرجاء إدخال البريد الإلكتروني";
                   }
                   return null;
                 },
@@ -72,6 +68,7 @@ class _SignUpState extends State<SignUp> {
               ),
               // password
               TextFormField(
+                style: Theme.of(context).textTheme.titleSmall,
                 obscureText: true,
                 decoration: InputDecoration(
                   labelStyle: TextStyle(
@@ -85,13 +82,13 @@ class _SignUpState extends State<SignUp> {
                     Icons.visibility,
                     color: const Color.fromARGB(255, 141, 141, 141),
                   ),
-                  hintText: S.of(context).text_field1,
+                  hintText: "أدخل كلمة المرور",
                   border: OutlineInputBorder(),
                 ),
                 onSaved: (value) => password = value,
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return S.of(context).text_field22;
+                    return " الرجاء ادخال كلمه المرور الصحيحه";
                   } else {
                     return null;
                   }
@@ -101,9 +98,6 @@ class _SignUpState extends State<SignUp> {
                 height: 10,
               ),
               ElevatedButton(
-                
-                
-      
                 onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
                     _formKey.currentState!.save();
@@ -114,17 +108,15 @@ class _SignUpState extends State<SignUp> {
                     print('$password');
                     // Process the registration data here
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text(S.of(context).text_field13)),
+                      SnackBar(content: Text('text_field13')),
                     );
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => TapScrean()));
                   }
                 },
                 child: Text(
-                  S.of(context).register,
-                  style: TextStyle(
-                    color: color
-                  ),
+                  'تاكيد التسجيل  ',
+                  style: TextStyle(color: color),
                 ),
               ),
               SizedBox(
@@ -140,10 +132,8 @@ class _SignUpState extends State<SignUp> {
                   },
                   child: Center(
                       child: Text(
-                    S.of(context).text_signup,
-                    style: TextStyle(color: color
-                    ,fontStyle: FontStyle.italic
-                    ),
+                    "اذا لم يكن لديك حساب انشاء الان",
+                    style: TextStyle(color: color, fontStyle: FontStyle.italic),
                   )))
             ],
           ),

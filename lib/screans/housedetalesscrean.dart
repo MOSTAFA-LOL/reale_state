@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:provider/provider.dart';
 
-import 'package:realestate/data.dart/data.dart';
+import 'package:realestate/data/data.dart';
 import 'package:realestate/provider/book_provider.dart';
 // import 'package:realestate/data.dart/data2.dart';
 import 'package:realestate/provider/favorite_prvider.dart';
@@ -24,30 +24,32 @@ class HouseDetalesScrean extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildAppBarSection (context),
-            const SizedBox(height: 24),
-            _buildPriceAndBookmark(provider, context),
-            const SizedBox(height: 20),
-            _buildHeaderSection(),
-            const SizedBox(height: 24),
-            _buildAmenitiesSection(),
-            const Divider(height: 40),
-            _buildAgentSection(),
-            const Divider(height: 40),
-            _buildOverviewSection(),
-            const Divider(height: 40),
-            _buildFacilitiesSection(),
-            const Divider(height: 40),
-            _buildGallerySection(),
-            SizedBox(height: 10,),
-            _buildMapSection(context),
-            
-            _buildContactAndBookingSection(context)
-            
-          ],
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildAppBarSection (context),
+              const SizedBox(height: 24),
+              _buildPriceAndBookmark(provider, context),
+              const SizedBox(height: 20),
+              _buildHeaderSection(),
+              const SizedBox(height: 24),
+              _buildAmenitiesSection(),
+              const Divider(height: 40),
+              _buildAgentSection(),
+              const Divider(height: 40),
+              _buildOverviewSection(),
+              const Divider(height: 40),
+              _buildFacilitiesSection(),
+              const Divider(height: 40),
+              _buildGallerySection(),
+              SizedBox(height: 10,),
+              _buildMapSection(context),
+              
+              _buildContactAndBookingSection(context)
+              
+            ],
+          ),
         ),
       ),
     );
@@ -58,7 +60,7 @@ class HouseDetalesScrean extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'APARTMENT',
+          'شقق',
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
@@ -87,7 +89,7 @@ class HouseDetalesScrean extends StatelessWidget {
                     )),
             const SizedBox(width: 8),
             Text(
-              '(1,275 reviews)',
+              '(1,275 اراء العملاء)',
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.grey.shade600,
@@ -103,9 +105,9 @@ class HouseDetalesScrean extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _buildAmenityItem(Icons.bed, '8 Beds'),
-        _buildAmenityItem(Icons.bathtub, '3 Bath'),
-        _buildAmenityItem(Icons.aspect_ratio, '2000 sqft'),
+        _buildAmenityItem(Icons.bed, '8 سرير'),
+        _buildAmenityItem(Icons.bathtub, '3 حمام'),
+        _buildAmenityItem(Icons.aspect_ratio, '2000 متر/مربع'),
       ],
     );
   }
@@ -130,13 +132,20 @@ class HouseDetalesScrean extends StatelessWidget {
   Widget _buildAgentSection() {
     return Row(
       children: [
-        Image.asset('assets/images/avatar.png'),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(11),
+          child: Image.asset(
+            fit:BoxFit.fill ,
+            height: 55,
+            'assets/images/e5ab50f405a225bd949fc3b9c960de8d.png'
+          ),
+        ),
         const SizedBox(width: 16),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Agent',
+              'عميل',
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.grey.shade600,
@@ -150,7 +159,7 @@ class HouseDetalesScrean extends StatelessWidget {
               ),
             ),
             Text(
-              'Owner',
+              ' المالك',
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.grey.shade600,
@@ -167,7 +176,7 @@ class HouseDetalesScrean extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Overview',
+          'الاراء',
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -189,15 +198,21 @@ class HouseDetalesScrean extends StatelessWidget {
   }
     Widget _buildFacilitiesSection() {
     final facilities = [
-      'Car Parking', 'Swimming Pool', 'Gym & Fitness', 'Restaurant',
-      'Wi-fi & Network', 'Pet Center', 'Sport Center', 'Laundry'
+      'جراج سيارات ',
+      'حمامات سباحه', 
+      'صالات رياضيه', 
+      'مطاعم',
+      'شبكه اتصالات ', 
+      'مركز للحيوانات الاليفه', 
+      'مراكز رياضيه ', 
+      'مغسله '
     ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Facilities',
+          'المميزات',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -226,7 +241,7 @@ class HouseDetalesScrean extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Location',
+          'الموقع',
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -234,11 +249,11 @@ class HouseDetalesScrean extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-        _buildLocationItem('Grand City St. 100, New York, United States'),
-        _buildLocationItem('488 Fcrywell Road'),
-        _buildLocationItem('621 Julian Court'),
-        _buildLocationItem('P. Gregory'),
-        _buildLocationItem('City College'),
+        _buildLocationItem('مصر الجديده 100 شارع شبرا '),
+        _buildLocationItem('77 منطقه الكوربه '),
+        _buildLocationItem('10 شارع وسط البلد'),
+        _buildLocationItem('مديني'),
+        _buildLocationItem('مدينه الرحاب '),
       ],
     );
   }
@@ -269,6 +284,7 @@ class HouseDetalesScrean extends StatelessWidget {
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
+                  // ignore: deprecated_member_use
                   color: Colors.black.withOpacity(0.3),
                   blurRadius: 20,
                   spreadRadius: 2,
@@ -418,7 +434,7 @@ class HouseDetalesScrean extends StatelessWidget {
         _showBookingConfirmation(context);
       },
       child: Text(
-        'Booking now',
+        'احجز الان',
         style: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.bold,
@@ -434,7 +450,7 @@ class HouseDetalesScrean extends StatelessWidget {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          '!Booking confirmed successfully',
+          'تم الحجز بنجاح',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 16,
@@ -465,7 +481,7 @@ class HouseDetalesScrean extends StatelessWidget {
                 color: const Color.fromARGB(255, 243, 18, 18)),
             const SizedBox(width: 8),
             Text(
-              isFavorite ? 'Added to Favorites' : 'Removed from Favorites',
+              isFavorite ? 'اضف الي المفضله' : 'تم الحذف من المفضله',
               style: TextStyle(color: color),
             ),
           ],

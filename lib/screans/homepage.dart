@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:realestate/data.dart/data.dart';
+import 'package:realestate/data/data.dart';
+
 
 import 'package:realestate/navbar/search.dart';
 import 'package:realestate/screans/housedetalesscrean.dart';
@@ -80,15 +81,15 @@ class _HomepageState extends State<Homepage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Good Morning',
+                      'صباح الخير',
                       style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 12,
                           // ignore: deprecated_member_use
                           color: color,
                           fontStyle: FontStyle.italic),
                     ),
                     Text(
-                      'Andrian hajdin',
+                      'اسم المالك',
                         style: Theme.of(context).textTheme.titleMedium, 
                         
                     ),
@@ -96,7 +97,7 @@ class _HomepageState extends State<Homepage> {
               Spacer(),
             ]),
             Text(
-              'Property Types',
+              'اقسام العقارات',
               style: Theme.of(context).textTheme.titleLarge,
             ),
           SingleChildScrollView(
@@ -109,42 +110,42 @@ class _HomepageState extends State<Homepage> {
           context: context,
           types: propertyTypes1,
           imagePath: "assets/images/Townhouse.png",
-          label: "House",
+          label: "منزل",
           imageWidth: 28,
         ),
         _buildPropertyTypeButton(
           context: context,
           types: propertyTypes2,
           imagePath: "assets/images/Villa.png",
-          label: "Villa",
+          label: "ٌفيلا",
           imageWidth: 33,
         ),
         _buildPropertyTypeButton(
           context: context,
           types: propertyTypes3,
           imagePath: "assets/images/Private House.png",
-          label: "Vip Home",
+          label: "منزلك الخاص",
           imageWidth: 25,
         ),
         _buildPropertyTypeButton(
           context: context,
           types: propertyTypes4,
           imagePath: "assets/images/Apartment.png",
-          label: "Apartment",
+          label: "شقق",
           imageWidth: 30,
         ),
         _buildPropertyTypeButton(
           context: context,
           types: propertyTypes5,
           imagePath: "assets/images/Office_1.png",
-          label: "Office",
+          label: "مكاتب",
           imageWidth: 22,
         ),
         _buildPropertyTypeButton(
           context: context,
           types: propertyTypes6,
           imagePath: "assets/images/Shop_1.png",
-          label: "Shop",
+          label: "محلات ",
           imageWidth: 27,
           
         ),
@@ -162,7 +163,7 @@ class _HomepageState extends State<Homepage> {
                 Padding(
                   padding: const EdgeInsets.only(left: 7),
                   child: Text(
-                    'Featured',
+                    'توصيات',
                     style: Theme.of(context).textTheme.titleLarge,
                     // TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
@@ -170,7 +171,7 @@ class _HomepageState extends State<Homepage> {
                 Padding(
                   padding: const EdgeInsets.only(right: 7),
                   child: Text(
-                    'See All',
+                    'عرض المزيد',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
@@ -298,7 +299,7 @@ class _HomepageState extends State<Homepage> {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Text(
-                      'FOR SALE',
+                      'للبيع',
                       style: TextStyle(
                         color: const Color.fromARGB(157, 18, 126, 4),
                         fontSize: 12,

@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
-import 'package:realestate/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this
+
 import 'package:realestate/screans/login.dart';
 
 class Welcome extends StatefulWidget {
@@ -10,11 +12,14 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: content(),
+      
     );
   }
 
@@ -30,7 +35,8 @@ class _WelcomeState extends State<Welcome> {
         SizedBox(
           height: 2,
         ),
-        Text(S.of(context).title_name,
+        Text(
+          "للتسويق العقاري",
             style: TextStyle(
                 color: const Color.fromARGB(193, 17, 22, 32),
                 fontWeight: FontWeight.bold,
@@ -39,21 +45,22 @@ class _WelcomeState extends State<Welcome> {
           height: 10,
         ),
         Text(
-          S.of(context).title_desc,
+          "لربطك بمنزل أحلامك",
           // ignore: deprecated_member_use
-          style: TextStyle(color: Colors.black87.withOpacity(.6)),
+          style: TextStyle(fontSize: 22,
+            // ignore: deprecated_member_use
+            color: Colors.black87.withOpacity(.6)),
         ),
         SizedBox(
           height: 50,
         ),
         ElevatedButton(
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (_) => Login()));
+            Navigator.push(context, MaterialPageRoute(builder: (_) => Login()));
           },
           style: ButtonStyle(
               backgroundColor: WidgetStateProperty.all(Colors.blueAccent)),
-          child: Text(S.of(context).title_in,
+          child: Text('مرحبًا',
               style: TextStyle(
                   color: const Color.fromARGB(235, 253, 253, 253),
                   fontWeight: FontWeight.bold)),

@@ -11,7 +11,7 @@ class Bookpage extends StatelessWidget {
     final bookProvider = context.watch<BookProvider>();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('My Bookings')),
+      appBar: AppBar(title: const Text('حجوزاتي ')),
       body: ListView.builder(
         itemCount: bookProvider.bookedHouses.length,
         itemBuilder: (context, index) {
