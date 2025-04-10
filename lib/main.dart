@@ -1,5 +1,3 @@
-import 'package:dio/dio.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this
@@ -8,7 +6,6 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:realestate/Theme/theme.dart';
-
 
 import 'package:realestate/cubit/user_cubit.dart';
 import 'package:realestate/data/language.dart';
@@ -20,8 +17,7 @@ import 'package:realestate/screans/welcome.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
-  runApp(
-      const MyApp());
+  runApp(const MyApp());
 }
 
 var myColorScheme = ColorScheme.fromSeed(
@@ -53,7 +49,6 @@ class _MyAppState extends State<MyApp> {
             ChangeNotifierProvider(create: (_) => FavoritePrvider()),
           ],
           child: GetMaterialApp(
-            
               title: 'Real Estate',
               theme: ThemeService().lightTheme,
               darkTheme: ThemeService().darkTheme,
@@ -76,7 +71,7 @@ class _MyAppState extends State<MyApp> {
                     return supportedLocale;
                   }
                 }
-                
+
                 return supportedLocales.first;
               },
               home: Welcome()));

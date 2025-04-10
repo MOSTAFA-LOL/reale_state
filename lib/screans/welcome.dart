@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Add this
 
 import 'package:realestate/screans/login.dart';
 
@@ -12,14 +10,11 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: content(),
-      
     );
   }
 
@@ -35,8 +30,7 @@ class _WelcomeState extends State<Welcome> {
         SizedBox(
           height: 2,
         ),
-        Text(
-          "للتسويق العقاري",
+        Text("للتسويق العقاري",
             style: TextStyle(
                 color: const Color.fromARGB(193, 17, 22, 32),
                 fontWeight: FontWeight.bold,
@@ -47,9 +41,10 @@ class _WelcomeState extends State<Welcome> {
         Text(
           "لربطك بمنزل أحلامك",
           // ignore: deprecated_member_use
-          style: TextStyle(fontSize: 22,
-            // ignore: deprecated_member_use
-            color: Colors.black87.withOpacity(.6)),
+          style: TextStyle(
+              fontSize: 22,
+              // ignore: deprecated_member_use
+              color: Colors.black87.withOpacity(.6)),
         ),
         SizedBox(
           height: 50,

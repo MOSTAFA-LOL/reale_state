@@ -305,7 +305,6 @@ class _ProfileState extends State<Profile> {
                           MaterialPageRoute(
                             builder: (context) => Login(),
                           ));
-                      
                     },
                     child: Row(
                       children: [
@@ -337,5 +336,3 @@ class _ProfileState extends State<Profile> {
     );
   }
 }
- //محاذاه الي اليمين
-          
